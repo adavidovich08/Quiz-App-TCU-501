@@ -86,7 +86,6 @@ const styles = StyleSheet.create({
 class Quiz extends React.Component {
   constructor(props) {
     super(props);
-    this.getMyStringValue();
 
     this.playbackInstance = null;
 
@@ -100,8 +99,7 @@ class Quiz extends React.Component {
       imgOrFnc: false,
       preparing: false,
       idCC: 1,
-      timeLeft: 20,
-      scoreDB: 0
+      timeLeft: 20
     };
   }
 
@@ -124,24 +122,13 @@ class Quiz extends React.Component {
     this.playbackInstance.unloadAsync();
   }
 
-  setValue = async (value) => {
+  setValue = async (key, value) => {
     try {
-      await AsyncStorage.setItem('organs', value);
+      await AsyncStorage.setItem(key, value);
     } catch (e) {
       console.log('Save Error.');
     }
-
-    console.log('Done.');
-  };
-
-  getMyStringValue = async () => {
-    try {
-      this.state.scoreDB = await AsyncStorage.getItem('organs');
-      return 1;
-    } catch (e) {
-      console.log('Read Error.');
-      return 0;
-    }
+    console.log('Value saved.');
   };
 
   answer = (correct) => {
@@ -177,7 +164,10 @@ class Quiz extends React.Component {
       if (nextIndex >= state.totalCount) {
         // return this.props.navigation.popToTop();
         const scoreString = state.score.toString();
-        this.setValue(scoreString);
+        this.setValue(
+          this.props.navigation.getParam('title', 'error'),
+          scoreString
+        );
 
         return this.props.navigation.navigate('QuizIndex');
       }
@@ -318,7 +308,8 @@ class Quiz extends React.Component {
           styles.container,
           {backgroundColor: this.props.navigation.getParam('color')}
           // eslint-disable-next-line react/jsx-closing-bracket-location
-        ]}>
+        ]}
+      >
         <StatusBar barStyle="light-content" />
         <SafeAreaView style={styles.safearea}>
           {this.renderBody(question)}

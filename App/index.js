@@ -2,6 +2,7 @@ import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 import QuizIndex from './screens/QuizIndex';
 import Quiz from './screens/Quiz';
+import HighScore from './screens/HighScore';
 
 const MainStack = createStackNavigator({
   QuizIndex: {
@@ -20,6 +21,17 @@ const MainStack = createStackNavigator({
         borderBottomColor: navigation.getParam('color')
       }
     })
+  },
+  HighScore: {
+    screen: HighScore,
+    navigationOptions: {
+      headerTitle: 'High Scores',
+      headerTintColor: '#000',
+      headerStyle: {
+        backgroundColor: '#FFF',
+        borderBottomColor: '#FFF'
+      }
+    }
   }
 });
 

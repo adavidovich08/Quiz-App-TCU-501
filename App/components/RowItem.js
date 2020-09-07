@@ -14,7 +14,8 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: '#fff',
     fontWeight: '600',
-    marginLeft: 10
+    marginLeft: 10,
+    marginTop: 10
   }
 });
 
@@ -25,7 +26,7 @@ export const RowItem = ({onPress = () => {}, name, color, iconName}) => (
         name={iconName}
         size={30}
         color="white"
-        style={{paddingHorizontal: 10}}
+        style={{paddingHorizontal: 10, marginTop: 10}}
       />
       <Text style={styles.text}>{name}</Text>
     </View>
