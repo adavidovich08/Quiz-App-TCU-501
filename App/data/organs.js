@@ -3,10 +3,11 @@ const organs = [
     correctImg: require('../assets/brain.jpg'),
     correctDesc:
       'It is the boss of your body. It controls everything you do, even when you are asleep.',
+    correctOrgan: 'Brain',
     answers: [
       {
         id: '1',
-        organ: 'brain',
+        organ: 'Brain',
         img: require('../assets/brain.jpg'),
         desc:
           'It is the boss of your body. It controls everything you do, even when you are asleep.',
@@ -14,21 +15,21 @@ const organs = [
       },
       {
         id: '2',
-        organ: 'intestines',
+        organ: 'Intestines',
         img: require('../assets/intestines.jpg'),
         desc:
           'It finishes the process of digesting food. It absorbs water and salts.'
       },
       {
         id: '3',
-        organ: 'heart',
+        organ: 'Heart',
         img: require('../assets/heart.jpg'),
         desc:
           'It sends blood around your body. The blood provides the oxygen and nutrients it needs.'
       },
       {
         id: '4',
-        organ: 'liver',
+        organ: 'Liver',
         img: require('../assets/liver.jpg'),
         desc:
           'It cleans your blood. It produces an important digestive liquid called bile.'
@@ -39,10 +40,11 @@ const organs = [
     correctImg: require('../assets/heart.jpg'),
     correctDesc:
       'It sends blood around your body. The blood provides the oxygen and nutrients it needs.',
+    correctOrgan: 'Heart',
     answers: [
       {
         id: '1',
-        organ: 'heart',
+        organ: 'Heart',
         img: require('../assets/heart.jpg'),
         desc:
           'It sends blood around your body. The blood provides the oxygen and nutrients it needs.',
@@ -50,21 +52,21 @@ const organs = [
       },
       {
         id: '2',
-        organ: 'brain',
+        organ: 'Brain',
         img: require('../assets/brain.jpg'),
         desc:
           'It is the boss of your body. It controls everything you do, even when you are asleep.'
       },
       {
         id: '3',
-        organ: 'stomach',
+        organ: 'Stomach',
         img: require('../assets/stomach.jpg'),
         desc:
           'It stores the food you eat. It breaks down the food into a liquid mixture.'
       },
       {
         id: '4',
-        organ: 'spinal_cord',
+        organ: 'Spinal Cord',
         img: require('../assets/spinal_cord.jpg'),
         desc: 'It protects the main nerves of your body.'
       }
@@ -74,10 +76,11 @@ const organs = [
     correctImg: require('../assets/intestines.jpg'),
     correctDesc:
       'It finishes the process of digesting food. It absorbs water and salts.',
+    correctOrgan: 'Intestines',
     answers: [
       {
         id: '1',
-        organ: 'intestines',
+        organ: 'Intestines',
         img: require('../assets/intestines.jpg'),
         desc:
           'It finishes the process of digesting food. It absorbs water and salts.',
@@ -85,21 +88,21 @@ const organs = [
       },
       {
         id: '2',
-        organ: 'brain',
+        organ: 'Brain',
         img: require('../assets/brain.jpg'),
         desc:
           'It is the boss of your body. It controls everything you do, even when you are asleep.'
       },
       {
         id: '3',
-        organ: 'stomach',
+        organ: 'Stomach',
         img: require('../assets/stomach.jpg'),
         desc:
           'It stores the food you eat. It breaks down the food into a liquid mixture.'
       },
       {
         id: '4',
-        organ: 'kidneys',
+        organ: 'Kidneys',
         img: require('../assets/kidneys.jpg'),
         desc: 'It filters waste out of your blood.'
       }
@@ -108,31 +111,32 @@ const organs = [
   {
     correctImg: require('../assets/kidneys.jpg'),
     correctDesc: 'It filters waste out of your blood.',
+    correctOrgan: 'Kidney',
     answers: [
       {
         id: '1',
-        organ: 'kidneys',
+        organ: 'Kidneys',
         img: require('../assets/kidneys.jpg'),
         desc: 'It filters waste out of your blood.',
         correct: true
       },
       {
         id: '2',
-        organ: 'liver',
+        organ: 'Liver',
         img: require('../assets/liver.jpg'),
         desc:
           'It cleans your blood. It produces an important digestive liquid called bile.'
       },
       {
         id: '3',
-        organ: 'lungs',
+        organ: 'Lungs',
         img: require('../assets/lungs.jpg'),
         desc:
           'It allows you to breathe. It helps you to inhale and exhale the air.'
       },
       {
         id: '4',
-        organ: 'heart',
+        organ: 'Heart',
         img: require('../assets/heart.jpg'),
         desc:
           'It sends blood around your body. The blood provides the oxygen and nutrients it needs.'
@@ -143,10 +147,11 @@ const organs = [
     correctImg: require('../assets/liver.jpg'),
     correctDesc:
       'It cleans your blood. It produces an important digestive liquid called bile.',
+    correctOrgan: 'Liver',
     answers: [
       {
         id: '1',
-        organ: 'liver',
+        organ: 'Liver',
         img: require('../assets/liver.jpg'),
         desc:
           'It cleans your blood. It produces an important digestive liquid called bile.',
@@ -154,20 +159,20 @@ const organs = [
       },
       {
         id: '2',
-        organ: 'spinal_cord',
+        organ: 'Spinal Cord',
         img: require('../assets/spinal_cord.jpg'),
         desc: 'It protects the main nerves of your body.'
       },
       {
         id: '3',
-        organ: 'lungs',
+        organ: 'Lungs',
         img: require('../assets/lungs.jpg'),
         desc:
           'It allows you to breathe. It helps you to inhale and exhale the air.'
       },
       {
         id: '4',
-        organ: 'kidneys',
+        organ: 'Kidneys',
         img: require('../assets/kidneys.jpg'),
         desc: 'It filters waste out of your blood.'
       }
@@ -177,10 +182,11 @@ const organs = [
     correctImg: require('../assets/lungs.jpg'),
     correctDesc:
       'It allows you to breathe. It helps you to inhale and exhale the air.',
+    correctOrgan: 'Lungs',
     answers: [
       {
         id: '1',
-        organ: 'lungs',
+        organ: 'Lungs',
         img: require('../assets/lungs.jpg'),
         desc:
           'It allows you to breathe. It helps you to inhale and exhale the air.',
@@ -188,20 +194,20 @@ const organs = [
       },
       {
         id: '2',
-        organ: 'kidneys',
+        organ: 'Kidneys',
         img: require('../assets/kidneys.jpg'),
         desc: 'It filters waste out of your blood.'
       },
       {
         id: '3',
-        organ: 'heart',
+        organ: 'Heart',
         img: require('../assets/heart.jpg'),
         desc:
           'It sends blood around your body. The blood provides the oxygen and nutrients it needs.'
       },
       {
         id: '4',
-        organ: 'brain',
+        organ: 'Brain',
         img: require('../assets/brain.jpg'),
         desc:
           'It is the boss of your body. It controls everything you do, even when you are asleep.'
@@ -211,30 +217,31 @@ const organs = [
   {
     correctImg: require('../assets/spinal_cord.jpg'),
     correctDesc: 'It protects the main nerves of your body.',
+    correctOrgan: 'Spinal Cord',
     answers: [
       {
         id: '1',
-        organ: 'spinal_cord',
+        organ: 'Spinal Cord',
         img: require('../assets/spinal_cord.jpg'),
         desc: 'It protects the main nerves of your body.',
         correct: true
       },
       {
         id: '2',
-        organ: 'kidneys',
+        organ: 'Kidneys',
         img: require('../assets/kidneys.jpg'),
         desc: 'It filters waste out of your blood.'
       },
       {
         id: '3',
-        organ: 'lungs',
+        organ: 'Lungs',
         img: require('../assets/lungs.jpg'),
         desc:
           'It allows you to breathe. It helps you to inhale and exhale the air.'
       },
       {
         id: '4',
-        organ: 'brain',
+        organ: 'Brain',
         img: require('../assets/brain.jpg'),
         desc:
           'It is the boss of your body. It controls everything you do, even when you are asleep.'
@@ -245,10 +252,11 @@ const organs = [
     correctImg: require('../assets/stomach.jpg'),
     correctDesc:
       'It stores the food you eat. It breaks down the food into a liquid mixture.',
+    correctOrgan: 'Stomach',
     answers: [
       {
         id: '1',
-        organ: 'stomach',
+        organ: 'Stomach',
         img: require('../assets/stomach.jpg'),
         desc:
           'It stores the food you eat. It breaks down the food into a liquid mixture.',
@@ -256,20 +264,20 @@ const organs = [
       },
       {
         id: '2',
-        organ: 'intestines',
+        organ: 'Intestines',
         img: require('../assets/intestines.jpg'),
         desc:
           'It finishes the process of digesting food. It absorbs water and salts.'
       },
       {
         id: '3',
-        organ: 'kidneys',
+        organ: 'Kidneys',
         img: require('../assets/kidneys.jpg'),
         desc: 'It filters waste out of your blood.'
       },
       {
         id: '4',
-        organ: 'liver',
+        organ: 'Liver',
         img: require('../assets/liver.jpg'),
         desc:
           'It cleans your blood. It produces an important digestive liquid called bile.'

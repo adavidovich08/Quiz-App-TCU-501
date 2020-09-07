@@ -1,5 +1,11 @@
 import React from 'react';
-import {View, TouchableOpacity, Text, StyleSheet, Image} from 'react-native';
+import {
+  View,
+  TouchableOpacity,
+  Text,
+  StyleSheet,
+  ImageBackground
+} from 'react-native';
 
 const styles = StyleSheet.create({
   button: {
@@ -25,9 +31,23 @@ const styles = StyleSheet.create({
   },
   imgA: {
     borderRadius: 10,
+    overflow: 'hidden',
     width: 150,
     height: undefined,
-    aspectRatio: 4 / 3
+    aspectRatio: 4 / 3,
+    position: 'relative',
+    top: 0,
+    left: 0
+  },
+  txtOverlay: {
+    fontWeight: 'bold',
+    color: 'white',
+    position: 'absolute',
+    bottom: 5,
+    left: 5,
+    textShadowColor: 'rgba(0, 0, 0, 1)',
+    textShadowOffset: {width: -1, height: 1},
+    textShadowRadius: 5
   }
 });
 
@@ -37,9 +57,11 @@ export const Button = ({text, onPress = () => {}}) => (
   </TouchableOpacity>
 );
 
-export const ButtonImg = ({imgAnswer, onPress = () => {}}) => (
+export const ButtonImg = ({imgAnswer, imgTxt, onPress = () => {}}) => (
   <TouchableOpacity onPress={onPress} style={styles.button}>
-    <Image source={imgAnswer} style={styles.imgA} />
+    <ImageBackground style={styles.imgA} source={imgAnswer}>
+      <Text style={styles.txtOverlay}>{imgTxt}</Text>
+    </ImageBackground>
   </TouchableOpacity>
 );
 

@@ -4,7 +4,7 @@ import {ScrollView, StatusBar} from 'react-native';
 import organsQuestions from '../data/organs';
 import {RowItem} from '../components/RowItem';
 
-const shuffleQuestions = questions => {
+const shuffleQuestions = (questions) => {
   const shuffle = require('shuffle-array');
   shuffle(questions);
   return questions;
@@ -16,6 +16,7 @@ export default ({navigation}) => (
     <RowItem
       name="Organs (5th Grade)"
       color="#00c0f3"
+      iconName="brain"
       onPress={() =>
         navigation.navigate('Quiz', {
           title: 'Organs',
@@ -27,6 +28,7 @@ export default ({navigation}) => (
     <RowItem
       name="Placeholder"
       color="#bad2ad"
+      iconName="lead-pencil"
       onPress={() =>
         navigation.navigate('Quiz', {
           title: 'Organs',

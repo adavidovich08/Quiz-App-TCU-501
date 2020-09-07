@@ -5,9 +5,11 @@ import {
   StatusBar,
   Text,
   SafeAreaView,
-  Image
+  ImageBackground
 } from 'react-native';
 import CountDown from 'react-native-countdown-component';
+
+import AsyncStorage from '@react-native-community/async-storage';
 
 import {Audio} from 'expo-av';
 import {Button, ButtonContainer, ButtonImg} from '../components/Button';
@@ -54,9 +56,23 @@ const styles = StyleSheet.create({
   },
   imgQ: {
     borderRadius: 10,
+    overflow: 'hidden',
     width: 175,
     height: undefined,
-    aspectRatio: 4 / 3
+    aspectRatio: 4 / 3,
+    position: 'relative',
+    top: 0,
+    left: 0
+  },
+  txtOverlay: {
+    fontWeight: 'bold',
+    color: 'white',
+    position: 'absolute',
+    bottom: 5,
+    left: 5,
+    textShadowColor: 'rgba(0, 0, 0, 1)',
+    textShadowOffset: {width: -1, height: 1},
+    textShadowRadius: 5
   },
   textQ: {
     color: '#fff',
@@ -70,6 +86,7 @@ const styles = StyleSheet.create({
 class Quiz extends React.Component {
   constructor(props) {
     super(props);
+    this.getMyStringValue();
 
     this.playbackInstance = null;
 
@@ -83,7 +100,8 @@ class Quiz extends React.Component {
       imgOrFnc: false,
       preparing: false,
       idCC: 1,
-      timeLeft: 20
+      timeLeft: 20,
+      scoreDB: 0
     };
   }
 
@@ -91,7 +109,7 @@ class Quiz extends React.Component {
     Audio.setAudioModeAsync({
       allowsRecordingIOS: false,
       interruptionModeIOS: Audio.INTERRUPTION_MODE_IOS_DO_NOT_MIX,
-      playsInSilentModeIOS: true,
+      playsInSilentModeIOS: false,
       shouldDuckAndroid: true,
       playsInBackgroundModeIOS: true,
       playsInBackgroundModeAndroid: true,
@@ -99,19 +117,37 @@ class Quiz extends React.Component {
       playThroughEarpieceAndroid: false
     });
     //  This function will be called
-    this._loadNewPlaybackInstance(true);
+    this._loadNewPlaybackInstance();
   };
 
   componentWillUnmount() {
     this.playbackInstance.unloadAsync();
-    //  Check Your Console To verify that the above line is working
-    console.log('unmount');
   }
 
-  answer = correct => {
+  setValue = async (value) => {
+    try {
+      await AsyncStorage.setItem('organs', value);
+    } catch (e) {
+      console.log('Save Error.');
+    }
+
+    console.log('Done.');
+  };
+
+  getMyStringValue = async () => {
+    try {
+      this.state.scoreDB = await AsyncStorage.getItem('organs');
+      return 1;
+    } catch (e) {
+      console.log('Read Error.');
+      return 0;
+    }
+  };
+
+  answer = (correct) => {
     let timeBasedScore;
     this.setState(
-      state => {
+      (state) => {
         const nextState = {answered: true};
         nextState.preparing = true;
         nextState.idCC += 1;
@@ -135,11 +171,14 @@ class Quiz extends React.Component {
   };
 
   nextQuestion = () => {
-    this.setState(state => {
+    this.setState((state) => {
       const nextIndex = state.activeQuestionIndex + 1;
 
       if (nextIndex >= state.totalCount) {
         // return this.props.navigation.popToTop();
+        const scoreString = state.score.toString();
+        this.setValue(scoreString);
+
         return this.props.navigation.navigate('QuizIndex');
       }
 
@@ -153,7 +192,7 @@ class Quiz extends React.Component {
     });
   };
 
-  shuffleAnswers = answers => {
+  shuffleAnswers = (answers) => {
     let shuffle;
     if (!this.state.preparing) {
       shuffle = require('shuffle-array');
@@ -162,13 +201,13 @@ class Quiz extends React.Component {
     return answers;
   };
 
-  async _loadNewPlaybackInstance(playing) {
+  async _loadNewPlaybackInstance() {
     if (this.playbackInstance != null) {
       await this.playbackInstance.unloadAsync();
       this.playbackInstance.setOnPlaybackStatusUpdate(null);
       this.playbackInstance = null;
     }
-    const source = require('../assets/my-future.mp3');
+    const source = require('../assets/bensound-smallguitar2.mp3');
     const initialStatus = {
       //        Play by default
       shouldPlay: true,
@@ -181,16 +220,13 @@ class Quiz extends React.Component {
       //        mute the Audio
       isMuted: false
     };
-    const {sound, status} = await Audio.Sound.createAsync(
-      source,
-      initialStatus
-    );
+    const {sound} = await Audio.Sound.createAsync(source, initialStatus);
     //  Save the response of sound in playbackInstance
     this.playbackInstance = sound;
     //  Make the loop of Audio
     this.playbackInstance.setIsLoopingAsync(true);
     // Empieza en cierto ms
-    this.playbackInstance.setPositionAsync(103000);
+    // this.playbackInstance.setPositionAsync(103000);
     //  Play the Music
     this.playbackInstance.playAsync();
   }
@@ -229,13 +265,15 @@ class Quiz extends React.Component {
       return (
         <View>
           <View style={styles.imgContainer}>
-            <Image style={styles.imgQ} source={question.correctImg} />
+            <ImageBackground style={styles.imgQ} source={question.correctImg}>
+              <Text style={styles.txtOverlay}>{question.correctOrgan}</Text>
+            </ImageBackground>
           </View>
 
           <Text style={styles.text}> Which function matches the picture?</Text>
 
           <ButtonContainer>
-            {this.shuffleAnswers(question.answers).map(answer => (
+            {this.shuffleAnswers(question.answers).map((answer) => (
               <Button
                 key={answer.id}
                 text={answer.desc}
@@ -256,11 +294,12 @@ class Quiz extends React.Component {
         <Text style={styles.text}> Which picture matches the function? </Text>
 
         <ButtonContainer>
-          {this.shuffleAnswers(question.answers).map(answer => (
+          {this.shuffleAnswers(question.answers).map((answer) => (
             <ButtonImg
               key={answer.id}
               text={answer.desc}
               imgAnswer={answer.img}
+              imgTxt={answer.organ}
               onPress={() => this.answer(answer.correct)}
             />
           ))}
