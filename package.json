@@ -26,7 +26,7 @@
     "babel-preset-expo": "^8.2.3",
     "eslint": "^7.7.0",
     "eslint-config-handlebarlabs": "0.0.6",
-    "prettier": "^2.0.5"
+    "prettier": "^2.1.2"
   },
   "private": true
 }

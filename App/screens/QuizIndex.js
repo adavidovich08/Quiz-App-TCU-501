@@ -37,44 +37,68 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
     fontWeight: 'bold',
     fontSize: 21
+  },
+  copyrightText: {
+    fontSize: 12.5,
+    textAlign: 'center',
+    marginTop: 10,
+    letterSpacing: 1.5
   }
 });
 
-export default ({navigation}) => (
-  <View style={styles.container}>
-    <ScrollView>
-      <StatusBar barStyle="dark-content" />
-      <RowItem
-        name="Organs (5th Grade)"
-        color="#00c0f3"
-        iconName="brain"
-        onPress={() =>
-          navigation.navigate('Quiz', {
-            title: 'Organs',
-            questions: shuffleQuestions(organsQuestions),
-            color: '#00c0f3'
-          })
-        }
-      />
-      <RowItem
-        name="Placeholder"
-        color="#bad2ad"
-        iconName="lead-pencil"
-        onPress={() =>
-          navigation.navigate('Quiz', {
-            title: 'Placeholder',
-            questions: shuffleQuestions(organsQuestions),
-            color: '#bad2ad'
-          })
-        }
-      />
-    </ScrollView>
-    <TouchableOpacity
-      activeOpacity={0.85}
-      onPress={() => navigation.navigate('HighScore')}
-      style={styles.floatingButton}
-    >
-      <Text style={styles.floatingText}>high scores</Text>
-    </TouchableOpacity>
-  </View>
-);
+class QuizIndex extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      var2: 0
+    };
+    this.state.var2 = +1;
+  }
+
+  render() {
+    return (
+      <View style={styles.container}>
+        <ScrollView>
+          <StatusBar barStyle="dark-content" />
+          <RowItem
+            name="Organs (5th Grade)"
+            color="#00c0f3"
+            iconName="brain"
+            onPress={() =>
+              this.props.navigation.navigate('Quiz', {
+                title: 'Organs',
+                questions: shuffleQuestions(organsQuestions),
+                color: '#00c0f3'
+              })
+            }
+          />
+          <RowItem
+            name="Placeholder"
+            color="#bad2ad"
+            iconName="lead-pencil"
+            onPress={() =>
+              this.props.navigation.navigate('Quiz', {
+                title: 'Placeholder',
+                questions: shuffleQuestions(organsQuestions),
+                color: '#bad2ad'
+              })
+            }
+          />
+          <Text style={styles.copyrightText}>
+            {'\u00A9'} 2020 by TCU-501, UCR
+          </Text>
+        </ScrollView>
+        <TouchableOpacity
+          activeOpacity={0.85}
+          onPress={() => this.props.navigation.navigate('HighScore')}
+          style={styles.floatingButton}
+        >
+          <Text style={styles.floatingText}>high scores</Text>
+        </TouchableOpacity>
+      </View>
+    );
+  }
+}
+
+export default QuizIndex;

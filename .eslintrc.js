@@ -1,3 +1,6 @@
 module.exports = {
-  extends: "handlebarlabs"
+  extends: 'handlebarlabs',
+  rules: {
+    'react/jsx-one-expression-per-line': 'off'
+  }
 };
