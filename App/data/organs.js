@@ -1,285 +1,291 @@
+/**
+ * correctImg: the image corresponding to the correst answer or question
+ * correctShortType: usually what goes as txtOverlay of the image but could be the sole answer or question
+ * correctLongType: the question or the correct answer
+ * Naming conventions left ambiguous so they can be reused in other quizzes
+ */
 const organs = [
   {
     correctImg: require('../assets/brain.jpg'),
-    correctDesc:
+    correctLongType:
       'It is the boss of your body. It controls everything you do, even when you are asleep.',
-    correctOrgan: 'Brain',
+    correctShortType: 'Brain',
     answers: [
       {
         id: '1',
-        organ: 'Brain',
+        shortType: 'Brain',
         img: require('../assets/brain.jpg'),
-        desc:
+        longType:
           'It is the boss of your body. It controls everything you do, even when you are asleep.',
         correct: true
       },
       {
         id: '2',
-        organ: 'Intestines',
+        shortType: 'Intestines',
         img: require('../assets/intestines.jpg'),
-        desc:
+        longType:
           'It finishes the process of digesting food. It absorbs water and salts.'
       },
       {
         id: '3',
-        organ: 'Heart',
+        shortType: 'Heart',
         img: require('../assets/heart.jpg'),
-        desc:
+        longType:
           'It sends blood around your body. The blood provides the oxygen and nutrients it needs.'
       },
       {
         id: '4',
-        organ: 'Liver',
+        shortType: 'Liver',
         img: require('../assets/liver.jpg'),
-        desc:
+        longType:
           'It cleans your blood. It produces an important digestive liquid called bile.'
       }
     ]
   },
   {
     correctImg: require('../assets/heart.jpg'),
-    correctDesc:
+    correctLongType:
       'It sends blood around your body. The blood provides the oxygen and nutrients it needs.',
-    correctOrgan: 'Heart',
+    correctShortType: 'Heart',
     answers: [
       {
         id: '1',
-        organ: 'Heart',
+        shortType: 'Heart',
         img: require('../assets/heart.jpg'),
-        desc:
+        longType:
           'It sends blood around your body. The blood provides the oxygen and nutrients it needs.',
         correct: true
       },
       {
         id: '2',
-        organ: 'Brain',
+        shortType: 'Brain',
         img: require('../assets/brain.jpg'),
-        desc:
+        longType:
           'It is the boss of your body. It controls everything you do, even when you are asleep.'
       },
       {
         id: '3',
-        organ: 'Stomach',
+        shortType: 'Stomach',
         img: require('../assets/stomach.jpg'),
-        desc:
+        longType:
           'It stores the food you eat. It breaks down the food into a liquid mixture.'
       },
       {
         id: '4',
-        organ: 'Spinal Cord',
+        shortType: 'Spinal Cord',
         img: require('../assets/spinal_cord.jpg'),
-        desc: 'It protects the main nerves of your body.'
+        longType: 'It protects the main nerves of your body.'
       }
     ]
   },
   {
     correctImg: require('../assets/intestines.jpg'),
-    correctDesc:
+    correctLongType:
       'It finishes the process of digesting food. It absorbs water and salts.',
-    correctOrgan: 'Intestines',
+    correctShortType: 'Intestines',
     answers: [
       {
         id: '1',
-        organ: 'Intestines',
+        shortType: 'Intestines',
         img: require('../assets/intestines.jpg'),
-        desc:
+        longType:
           'It finishes the process of digesting food. It absorbs water and salts.',
         correct: true
       },
       {
         id: '2',
-        organ: 'Brain',
+        shortType: 'Brain',
         img: require('../assets/brain.jpg'),
-        desc:
+        longType:
           'It is the boss of your body. It controls everything you do, even when you are asleep.'
       },
       {
         id: '3',
-        organ: 'Stomach',
+        shortType: 'Stomach',
         img: require('../assets/stomach.jpg'),
-        desc:
+        longType:
           'It stores the food you eat. It breaks down the food into a liquid mixture.'
       },
       {
         id: '4',
-        organ: 'Kidneys',
+        shortType: 'Kidneys',
         img: require('../assets/kidneys.jpg'),
-        desc: 'It filters waste out of your blood.'
+        longType: 'It filters waste out of your blood.'
       }
     ]
   },
   {
     correctImg: require('../assets/kidneys.jpg'),
-    correctDesc: 'It filters waste out of your blood.',
-    correctOrgan: 'Kidney',
+    correctLongType: 'It filters waste out of your blood.',
+    correctShortType: 'Kidney',
     answers: [
       {
         id: '1',
-        organ: 'Kidneys',
+        shortType: 'Kidneys',
         img: require('../assets/kidneys.jpg'),
-        desc: 'It filters waste out of your blood.',
+        longType: 'It filters waste out of your blood.',
         correct: true
       },
       {
         id: '2',
-        organ: 'Liver',
+        shortType: 'Liver',
         img: require('../assets/liver.jpg'),
-        desc:
+        longType:
           'It cleans your blood. It produces an important digestive liquid called bile.'
       },
       {
         id: '3',
-        organ: 'Lungs',
+        shortType: 'Lungs',
         img: require('../assets/lungs.jpg'),
-        desc:
+        longType:
           'It allows you to breathe. It helps you to inhale and exhale the air.'
       },
       {
         id: '4',
-        organ: 'Heart',
+        shortType: 'Heart',
         img: require('../assets/heart.jpg'),
-        desc:
+        longType:
           'It sends blood around your body. The blood provides the oxygen and nutrients it needs.'
       }
     ]
   },
   {
     correctImg: require('../assets/liver.jpg'),
-    correctDesc:
+    correctLongType:
       'It cleans your blood. It produces an important digestive liquid called bile.',
-    correctOrgan: 'Liver',
+    correctShortType: 'Liver',
     answers: [
       {
         id: '1',
-        organ: 'Liver',
+        shortType: 'Liver',
         img: require('../assets/liver.jpg'),
-        desc:
+        longType:
           'It cleans your blood. It produces an important digestive liquid called bile.',
         correct: true
       },
       {
         id: '2',
-        organ: 'Spinal Cord',
+        shortType: 'Spinal Cord',
         img: require('../assets/spinal_cord.jpg'),
-        desc: 'It protects the main nerves of your body.'
+        longType: 'It protects the main nerves of your body.'
       },
       {
         id: '3',
-        organ: 'Lungs',
+        shortType: 'Lungs',
         img: require('../assets/lungs.jpg'),
-        desc:
+        longType:
           'It allows you to breathe. It helps you to inhale and exhale the air.'
       },
       {
         id: '4',
-        organ: 'Kidneys',
+        shortType: 'Kidneys',
         img: require('../assets/kidneys.jpg'),
-        desc: 'It filters waste out of your blood.'
+        longType: 'It filters waste out of your blood.'
       }
     ]
   },
   {
     correctImg: require('../assets/lungs.jpg'),
-    correctDesc:
+    correctLongType:
       'It allows you to breathe. It helps you to inhale and exhale the air.',
-    correctOrgan: 'Lungs',
+    correctShortType: 'Lungs',
     answers: [
       {
         id: '1',
-        organ: 'Lungs',
+        shortType: 'Lungs',
         img: require('../assets/lungs.jpg'),
-        desc:
+        longType:
           'It allows you to breathe. It helps you to inhale and exhale the air.',
         correct: true
       },
       {
         id: '2',
-        organ: 'Kidneys',
+        shortType: 'Kidneys',
         img: require('../assets/kidneys.jpg'),
-        desc: 'It filters waste out of your blood.'
+        longType: 'It filters waste out of your blood.'
       },
       {
         id: '3',
-        organ: 'Heart',
+        shortType: 'Heart',
         img: require('../assets/heart.jpg'),
-        desc:
+        longType:
           'It sends blood around your body. The blood provides the oxygen and nutrients it needs.'
       },
       {
         id: '4',
-        organ: 'Brain',
+        shortType: 'Brain',
         img: require('../assets/brain.jpg'),
-        desc:
+        longType:
           'It is the boss of your body. It controls everything you do, even when you are asleep.'
       }
     ]
   },
   {
     correctImg: require('../assets/spinal_cord.jpg'),
-    correctDesc: 'It protects the main nerves of your body.',
-    correctOrgan: 'Spinal Cord',
+    correctLongType: 'It protects the main nerves of your body.',
+    correctShortType: 'Spinal Cord',
     answers: [
       {
         id: '1',
-        organ: 'Spinal Cord',
+        shortType: 'Spinal Cord',
         img: require('../assets/spinal_cord.jpg'),
-        desc: 'It protects the main nerves of your body.',
+        longType: 'It protects the main nerves of your body.',
         correct: true
       },
       {
         id: '2',
-        organ: 'Kidneys',
+        shortType: 'Kidneys',
         img: require('../assets/kidneys.jpg'),
-        desc: 'It filters waste out of your blood.'
+        longType: 'It filters waste out of your blood.'
       },
       {
         id: '3',
-        organ: 'Lungs',
+        shortType: 'Lungs',
         img: require('../assets/lungs.jpg'),
-        desc:
+        longType:
           'It allows you to breathe. It helps you to inhale and exhale the air.'
       },
       {
         id: '4',
-        organ: 'Brain',
+        shortType: 'Brain',
         img: require('../assets/brain.jpg'),
-        desc:
+        longType:
           'It is the boss of your body. It controls everything you do, even when you are asleep.'
       }
     ]
   },
   {
     correctImg: require('../assets/stomach.jpg'),
-    correctDesc:
+    correctLongType:
       'It stores the food you eat. It breaks down the food into a liquid mixture.',
-    correctOrgan: 'Stomach',
+    correctShortType: 'Stomach',
     answers: [
       {
         id: '1',
-        organ: 'Stomach',
+        shortType: 'Stomach',
         img: require('../assets/stomach.jpg'),
-        desc:
+        longType:
           'It stores the food you eat. It breaks down the food into a liquid mixture.',
         correct: true
       },
       {
         id: '2',
-        organ: 'Intestines',
+        shortType: 'Intestines',
         img: require('../assets/intestines.jpg'),
-        desc:
+        longType:
           'It finishes the process of digesting food. It absorbs water and salts.'
       },
       {
         id: '3',
-        organ: 'Kidneys',
+        shortType: 'Kidneys',
         img: require('../assets/kidneys.jpg'),
-        desc: 'It filters waste out of your blood.'
+        longType: 'It filters waste out of your blood.'
       },
       {
         id: '4',
-        organ: 'Liver',
+        shortType: 'Liver',
         img: require('../assets/liver.jpg'),
-        desc:
+        longType:
           'It cleans your blood. It produces an important digestive liquid called bile.'
       }
     ]

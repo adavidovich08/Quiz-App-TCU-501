@@ -8,28 +8,28 @@ import {
 } from 'react-native';
 
 const styles = StyleSheet.create({
-  button: {
-    backgroundColor: 'rgba(255, 255, 255, 0.3)',
-    borderRadius: 10,
-    paddingVertical: 5,
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: '47.5%',
-    marginTop: 20
-  },
-  text: {
-    color: '#fff',
-    fontSize: 18,
-    textAlign: 'center',
-    fontWeight: '600'
-  },
   buttonContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     marginTop: 5,
     justifyContent: 'space-between'
   },
-  imgA: {
+  button: {
+    backgroundColor: 'rgba(255, 255, 255, 0.3)',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '47.5%',
+    borderRadius: 10,
+    paddingVertical: 5,
+    marginTop: 20
+  },
+  txtAnswer: {
+    color: '#fff',
+    textAlign: 'center',
+    fontWeight: '600',
+    fontSize: 18
+  },
+  imgAnswer: {
     borderRadius: 10,
     overflow: 'hidden',
     width: 150,
@@ -51,15 +51,17 @@ const styles = StyleSheet.create({
   }
 });
 
-export const Button = ({text, onPress = () => {}}) => (
+// Used when answers are in text form
+export const Button = ({txtAnswer, onPress = () => {}}) => (
   <TouchableOpacity onPress={onPress} style={styles.button}>
-    <Text style={styles.text}>{text}</Text>
+    <Text style={styles.txtAnswer}>{txtAnswer}</Text>
   </TouchableOpacity>
 );
 
+// Used when answers are in image form
 export const ButtonImg = ({imgAnswer, imgTxt, onPress = () => {}}) => (
   <TouchableOpacity onPress={onPress} style={styles.button}>
-    <ImageBackground style={styles.imgA} source={imgAnswer}>
+    <ImageBackground style={styles.imgAnswer} source={imgAnswer}>
       <Text style={styles.txtOverlay}>{imgTxt}</Text>
     </ImageBackground>
   </TouchableOpacity>

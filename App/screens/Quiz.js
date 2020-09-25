@@ -12,6 +12,7 @@ import CountDown from 'react-native-countdown-component';
 import AsyncStorage from '@react-native-community/async-storage';
 
 import {Audio} from 'expo-av';
+
 import {Button, ButtonContainer, ButtonImg} from '../components/Button';
 import {Alert} from '../components/Alert';
 
@@ -23,10 +24,10 @@ const styles = StyleSheet.create({
   },
   text: {
     color: '#fff',
-    fontSize: 20,
     textAlign: 'center',
-    letterSpacing: -0.05,
-    fontWeight: '500'
+    fontWeight: '500',
+    fontSize: 20,
+    letterSpacing: -0.05
   },
   bottomViewStyle: {
     flexDirection: 'row',
@@ -34,10 +35,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 15
   },
-  safearea: {
+  safeArea: {
+    justifyContent: 'space-between',
     flex: 1,
-    marginTop: 10,
-    justifyContent: 'space-between'
+    marginTop: 10
   },
   imgContainer: {
     marginTop: 10,
@@ -46,23 +47,30 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   txtContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
     backgroundColor: 'rgba(255, 255, 255, 0.3)',
     borderRadius: 10,
     marginTop: 10,
     marginBottom: 20,
-    padding: 20,
-    justifyContent: 'center',
-    alignItems: 'center'
+    padding: 20
   },
-  imgQ: {
-    borderRadius: 10,
-    overflow: 'hidden',
-    width: 175,
-    height: undefined,
-    aspectRatio: 4 / 3,
+  imgQuestion: {
     position: 'relative',
+    overflow: 'hidden',
+    height: undefined,
+    width: 175,
+    aspectRatio: 4 / 3,
+    borderRadius: 10,
     top: 0,
     left: 0
+  },
+  textQuestion: {
+    color: '#fff',
+    textAlign: 'center',
+    fontWeight: '500',
+    fontSize: 20,
+    letterSpacing: 0.25
   },
   txtOverlay: {
     fontWeight: 'bold',
@@ -73,13 +81,6 @@ const styles = StyleSheet.create({
     textShadowColor: 'rgba(0, 0, 0, 1)',
     textShadowOffset: {width: -1, height: 1},
     textShadowRadius: 5
-  },
-  textQ: {
-    color: '#fff',
-    fontSize: 20,
-    textAlign: 'center',
-    letterSpacing: 0.25,
-    fontWeight: '500'
   }
 });
 
@@ -98,11 +99,12 @@ class Quiz extends React.Component {
       answerCorrect: false,
       imgOrFnc: false,
       preparing: false,
-      idCC: 1,
+      idCC: 1, // Countdown doesn't work if I don't change this ID
       timeLeft: 20
     };
   }
 
+  // Sets the audio player settings
   componentDidMount = async () => {
     Audio.setAudioModeAsync({
       allowsRecordingIOS: false,
@@ -114,7 +116,7 @@ class Quiz extends React.Component {
       interruptionModeAndroid: Audio.INTERRUPTION_MODE_ANDROID_DO_NOT_MIX,
       playThroughEarpieceAndroid: false
     });
-    //  This function will be called
+    // This function will be called
     this._loadNewPlaybackInstance();
   };
 
@@ -122,15 +124,26 @@ class Quiz extends React.Component {
     this.playbackInstance.unloadAsync();
   }
 
+  /**
+   * Stores a pair of key and value in the local storage
+   * @param {string} key
+   * @param {string} value
+   */
   setValue = async (key, value) => {
     try {
       await AsyncStorage.setItem(key, value);
     } catch (e) {
       console.log('Save Error.');
     }
-    console.log('Value saved.');
   };
 
+  /**
+   * Receives true if correct answer was selected and false if it wasn't
+   * Prepares for next question
+   * Updates the score based on time left in countdown
+   * Calls nextQuestion()
+   * @param {boolean} correct
+   */
   answer = (correct) => {
     let timeBasedScore;
     this.setState(
@@ -157,17 +170,16 @@ class Quiz extends React.Component {
     );
   };
 
+  /**
+   * Ends the quiz and returns to home screen
+   * or sets the state for next question
+   */
   nextQuestion = () => {
     this.setState((state) => {
       const nextIndex = state.activeQuestionIndex + 1;
 
       if (nextIndex >= state.totalCount) {
-        // return this.props.navigation.popToTop();
-        const scoreString = state.score.toString();
-        this.setValue(
-          this.props.navigation.getParam('title', 'error'),
-          scoreString
-        );
+        // Here navigate to quiz revision
 
         return this.props.navigation.navigate('QuizIndex');
       }
@@ -191,6 +203,7 @@ class Quiz extends React.Component {
     return answers;
   };
 
+  // Function that plays the audio
   async _loadNewPlaybackInstance() {
     if (this.playbackInstance != null) {
       await this.playbackInstance.unloadAsync();
@@ -199,24 +212,18 @@ class Quiz extends React.Component {
     }
     const source = require('../assets/bensound-smallguitar2.mp3');
     const initialStatus = {
-      //        Play by default
       shouldPlay: true,
-      //        Control the speed
-      rate: 1.0,
-      //        Correct the pitch
+      rate: 1.0, // Control the speed
       shouldCorrectPitch: true,
-      //        Control the Volume
-      volume: 1.0,
-      //        mute the Audio
+      volume: 1.0, // Control the volume
       isMuted: false
     };
     const {sound} = await Audio.Sound.createAsync(source, initialStatus);
-    //  Save the response of sound in playbackInstance
+
+    // Save the response of sound in playbackInstance
     this.playbackInstance = sound;
-    //  Make the loop of Audio
+    // Make the loop of Audio
     this.playbackInstance.setIsLoopingAsync(true);
-    // Empieza en cierto ms
-    // this.playbackInstance.setPositionAsync(103000);
     //  Play the Music
     this.playbackInstance.playAsync();
   }
@@ -225,7 +232,7 @@ class Quiz extends React.Component {
     this.state.timeLeft -= 1;
   }
 
-  renderCD() {
+  renderCountdown() {
     if (!this.state.preparing) {
       return (
         <CountDown
@@ -244,19 +251,20 @@ class Quiz extends React.Component {
         />
       );
     }
-    // podria devolver el color final como un
-    // cuadrado verde, amarillo o rojo
     return null;
   }
 
   renderBody(question) {
     if (this.state.imgOrFnc) {
-      // picture question
+      // Picture question
       return (
         <View>
           <View style={styles.imgContainer}>
-            <ImageBackground style={styles.imgQ} source={question.correctImg}>
-              <Text style={styles.txtOverlay}>{question.correctOrgan}</Text>
+            <ImageBackground
+              style={styles.imgQuestion}
+              source={question.correctImg}
+            >
+              <Text style={styles.txtOverlay}>{question.correctShortType}</Text>
             </ImageBackground>
           </View>
 
@@ -266,7 +274,7 @@ class Quiz extends React.Component {
             {this.shuffleAnswers(question.answers).map((answer) => (
               <Button
                 key={answer.id}
-                text={answer.desc}
+                txtAnswer={answer.longType}
                 onPress={() => this.answer(answer.correct)}
               />
             ))}
@@ -274,11 +282,11 @@ class Quiz extends React.Component {
         </View>
       );
     }
-    // function question
+    // Function question
     return (
       <View>
         <View style={styles.txtContainer}>
-          <Text style={styles.textQ}>{question.correctDesc}</Text>
+          <Text style={styles.textQuestion}>{question.correctLongType}</Text>
         </View>
 
         <Text style={styles.text}> Which picture matches the function? </Text>
@@ -287,9 +295,8 @@ class Quiz extends React.Component {
           {this.shuffleAnswers(question.answers).map((answer) => (
             <ButtonImg
               key={answer.id}
-              text={answer.desc}
               imgAnswer={answer.img}
-              imgTxt={answer.organ}
+              imgTxt={answer.shortType}
               onPress={() => this.answer(answer.correct)}
             />
           ))}
@@ -307,18 +314,17 @@ class Quiz extends React.Component {
         style={[
           styles.container,
           {backgroundColor: this.props.navigation.getParam('color')}
-          // eslint-disable-next-line react/jsx-closing-bracket-location
         ]}
       >
         <StatusBar barStyle="light-content" />
-        <SafeAreaView style={styles.safearea}>
+        <SafeAreaView style={styles.safeArea}>
           {this.renderBody(question)}
 
           <View style={styles.bottomViewStyle}>
             <Text style={styles.text}>
               {`${this.state.correctCount}/${this.state.totalCount}`}
             </Text>
-            {this.renderCD()}
+            {this.renderCountdown()}
             <Text style={styles.text}>
               {this.state.score}
               pts

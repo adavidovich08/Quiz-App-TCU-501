@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   circle: {
-    backgroundColor: '#FF0A3F',
+    backgroundColor: '#FF0A3F', // Red (incorrect)
     width: screen.width / 2,
     height: screen.width / 2,
     borderRadius: screen.width / 2,
@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   circleCorrect: {
-    backgroundColor: '#6DC067'
+    backgroundColor: '#6DC067' // Green (correct)
   },
   icon: {
     width: screen.width / 3
@@ -33,12 +33,14 @@ const styles = StyleSheet.create({
 export const Alert = ({correct, visible}) => {
   if (!visible) return null;
 
+  // Chooses check if correct and close if incorrect
   const icon = correct
     ? require('../assets/check.png')
     : require('../assets/close.png');
 
   const circleStyles = [styles.circle];
 
+  // If correct, changes icon color to green
   if (correct) {
     circleStyles.push(styles.circleCorrect);
   }

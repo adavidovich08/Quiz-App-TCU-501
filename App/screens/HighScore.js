@@ -17,39 +17,43 @@ const styles = StyleSheet.create({
   },
   text: {
     color: '#000',
-    fontSize: 20,
     fontWeight: '600',
+    fontSize: 20,
     marginTop: 10
   },
   textScore: {
-    color: '#000',
-    fontSize: 20,
-    fontWeight: '600',
-    marginRight: 25,
     textAlign: 'right',
-    marginTop: 10
+    color: '#000',
+    fontWeight: '600',
+    fontSize: 20,
+    marginTop: 10,
+    marginRight: 25
   },
   row: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    backgroundColor: '#80a9ba',
     paddingHorizontal: 10,
     paddingVertical: 20,
-    backgroundColor: '#80a9ba',
-    marginBottom: 2,
-    flexDirection: 'row',
-    justifyContent: 'space-between'
+    marginBottom: 2
   }
 });
 
 class HighScore extends React.Component {
-  constructor(props) {
-    super(props);
-
+  constructor() {
+    super();
     this.state = {
       data: []
     };
+
     this.getValue('Organs');
     this.getValue('Placeholder');
   }
 
+  /**
+   * Function returns name of icon asset depending on quiz name
+   * @param {string} quizName
+   */
   getIconName = (quizName) => {
     switch (quizName) {
       case 'Organs':
@@ -59,6 +63,11 @@ class HighScore extends React.Component {
     }
   };
 
+  /**
+   * Gets the highscore of the quiz with this key
+   * and pushes it to the data array displayed on screen
+   * @param {string} key
+   */
   getValue = async (key) => {
     try {
       let scoreDB = await AsyncStorage.getItem(key);

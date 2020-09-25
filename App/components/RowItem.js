@@ -4,21 +4,22 @@ import {MaterialCommunityIcons} from '@expo/vector-icons';
 
 const styles = StyleSheet.create({
   row: {
+    flexDirection: 'row',
+    backgroundColor: '#00C0F3',
     paddingHorizontal: 10,
     paddingVertical: 25,
-    backgroundColor: '#00C0F3',
-    marginBottom: 1,
-    flexDirection: 'row'
+    marginBottom: 1
   },
   text: {
-    fontSize: 20,
     color: '#fff',
     fontWeight: '600',
+    fontSize: 20,
     marginLeft: 10,
     marginTop: 10
   }
 });
 
+// Row items of the home screen
 export const RowItem = ({onPress = () => {}, name, color, iconName}) => (
   <TouchableOpacity onPress={onPress} activeOpacity={0.75}>
     <View style={[styles.row, {backgroundColor: color}]}>

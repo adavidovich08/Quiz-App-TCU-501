@@ -23,13 +23,13 @@ const styles = StyleSheet.create({
   },
   floatingButton: {
     position: 'absolute',
-    width: 200,
-    height: 50,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: '#3D3D3D',
+    width: 200,
+    height: 50,
     right: 30,
     bottom: 30,
-    backgroundColor: '#3D3D3D',
     borderRadius: 50
   },
   floatingText: {
@@ -39,21 +39,17 @@ const styles = StyleSheet.create({
     fontSize: 21
   },
   copyrightText: {
-    fontSize: 12.5,
     textAlign: 'center',
     marginTop: 10,
+    fontSize: 12.5,
     letterSpacing: 1.5
   }
 });
 
 class QuizIndex extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      var2: 0
-    };
-    this.state.var2 = +1;
+  // eslint-disable-next-line no-useless-constructor
+  constructor() {
+    super();
   }
 
   render() {
