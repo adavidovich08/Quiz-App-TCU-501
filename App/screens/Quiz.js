@@ -41,10 +41,10 @@ const styles = StyleSheet.create({
     marginTop: 10
   },
   imgContainer: {
-    marginTop: 10,
-    marginBottom: 20,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    marginTop: 10,
+    marginBottom: 20
   },
   txtContainer: {
     justifyContent: 'center',
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
     top: 0,
     left: 0
   },
-  textQuestion: {
+  txtQuestion: {
     color: '#fff',
     textAlign: 'center',
     fontWeight: '500',
@@ -92,6 +92,7 @@ class Quiz extends React.Component {
 
     this.state = {
       correctCount: 0,
+      questions: this.props.navigation.getParam('questions', []),
       totalCount: this.props.navigation.getParam('questions', []).length,
       activeQuestionIndex: 0,
       score: 0,
@@ -100,7 +101,8 @@ class Quiz extends React.Component {
       imgOrFnc: false,
       preparing: false,
       idCC: 1, // Countdown doesn't work if I don't change this ID
-      timeLeft: 20
+      timeLeft: 20,
+      corrections: []
     };
   }
 
@@ -144,7 +146,7 @@ class Quiz extends React.Component {
    * Calls nextQuestion()
    * @param {boolean} correct
    */
-  answer = (correct) => {
+  answer = (selectedAnswer) => {
     let timeBasedScore;
     this.setState(
       (state) => {
@@ -154,11 +156,37 @@ class Quiz extends React.Component {
         timeBasedScore = state.timeLeft * 25;
         nextState.timeLeft = 20;
 
-        if (correct) {
+        if (selectedAnswer.correct) {
           nextState.correctCount = state.correctCount + 1;
           nextState.score = state.score + 500 + timeBasedScore;
           nextState.answerCorrect = true;
         } else {
+          let correctionQuestion =
+            state.questions[state.activeQuestionIndex].correctLongType;
+          let correctAnswer =
+            state.questions[state.activeQuestionIndex].correctImg;
+          let incorrectAnswer = '';
+          if (selectedAnswer.incorrectAnswer !== '') {
+            incorrectAnswer = selectedAnswer.img;
+          }
+          if (state.imgOrFnc) {
+            correctionQuestion =
+              state.questions[state.activeQuestionIndex].correctImg;
+            correctAnswer =
+              state.questions[state.activeQuestionIndex].correctLongType;
+
+            if (selectedAnswer.incorrectAnswer !== '') {
+              incorrectAnswer = selectedAnswer.longType;
+            }
+          }
+          const correctionItem = {
+            type: state.imgOrFnc,
+            question: correctionQuestion,
+            incorrect: incorrectAnswer,
+            correct: correctAnswer,
+            key: state.questions[state.activeQuestionIndex].correctShortType
+          };
+          state.corrections.push(correctionItem);
           nextState.answerCorrect = false;
         }
 
@@ -179,9 +207,9 @@ class Quiz extends React.Component {
       const nextIndex = state.activeQuestionIndex + 1;
 
       if (nextIndex >= state.totalCount) {
-        // Here navigate to quiz revision
-
-        return this.props.navigation.navigate('QuizIndex');
+        return this.props.navigation.navigate('Corrections', {
+          corrections: state.corrections
+        });
       }
 
       return {
@@ -240,7 +268,7 @@ class Quiz extends React.Component {
           size={30}
           until={20}
           onChange={() => this.changeTimeLeft()}
-          onFinish={() => this.answer(false)}
+          onFinish={() => this.answer({correct: false, incorrectAnswer: ''})}
           digitStyle={{
             backgroundColor: this.props.navigation.getParam('color'),
             borderWidth: 0
@@ -275,7 +303,7 @@ class Quiz extends React.Component {
               <Button
                 key={answer.id}
                 txtAnswer={answer.longType}
-                onPress={() => this.answer(answer.correct)}
+                onPress={() => this.answer(answer)}
               />
             ))}
           </ButtonContainer>
@@ -286,7 +314,7 @@ class Quiz extends React.Component {
     return (
       <View>
         <View style={styles.txtContainer}>
-          <Text style={styles.textQuestion}>{question.correctLongType}</Text>
+          <Text style={styles.txtQuestion}>{question.correctLongType}</Text>
         </View>
 
         <Text style={styles.text}> Which picture matches the function? </Text>
@@ -297,7 +325,7 @@ class Quiz extends React.Component {
               key={answer.id}
               imgAnswer={answer.img}
               imgTxt={answer.shortType}
-              onPress={() => this.answer(answer.correct)}
+              onPress={() => this.answer(answer)}
             />
           ))}
         </ButtonContainer>
@@ -306,8 +334,7 @@ class Quiz extends React.Component {
   }
 
   render() {
-    const questions = this.props.navigation.getParam('questions', []);
-    const question = questions[this.state.activeQuestionIndex];
+    const question = this.state.questions[this.state.activeQuestionIndex];
 
     return (
       <View

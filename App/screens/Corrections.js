@@ -1,0 +1,215 @@
+import React from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  StatusBar,
+  SafeAreaView,
+  FlatList,
+  TouchableOpacity,
+  ImageBackground
+} from 'react-native';
+
+import {MaterialCommunityIcons} from '@expo/vector-icons';
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1
+  },
+  item: {
+    backgroundColor: '#B6C3CC',
+    paddingHorizontal: 20,
+    paddingVertical: 15,
+    marginBottom: 5
+  },
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    backgroundColor: '#B6C3CC',
+    paddingHorizontal: 10,
+    paddingVertical: 10
+  },
+  imgContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 5,
+    marginBottom: 10
+  },
+  imgQuestion: {
+    position: 'relative',
+    overflow: 'hidden',
+    height: undefined,
+    width: 150,
+    aspectRatio: 4 / 3,
+    borderRadius: 10,
+    top: 0,
+    left: 0
+  },
+  imgContainerSmall: {
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  imgQuestionSmall: {
+    position: 'relative',
+    overflow: 'hidden',
+    height: undefined,
+    width: 100,
+    aspectRatio: 4 / 3,
+    borderRadius: 10,
+    top: 0,
+    left: 0
+  },
+  txtContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(255, 255, 255, 0.3)',
+    borderRadius: 10,
+    marginTop: 5,
+    marginBottom: 10,
+    padding: 15
+  },
+  txtQuestion: {
+    color: '#000',
+    textAlign: 'center',
+    fontWeight: '500',
+    fontSize: 20,
+    letterSpacing: 0.25
+  },
+  txtContainerSmall: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(255, 255, 255, 0.3)',
+    borderRadius: 10,
+    padding: 10,
+    width: 200
+  },
+  txtQuestionSmall: {
+    color: '#000',
+    textAlign: 'center',
+    fontWeight: '500',
+    fontSize: 15,
+    letterSpacing: 0.1
+  },
+  floatingButton: {
+    position: 'absolute',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#3D3D3D',
+    width: 200,
+    height: 50,
+    right: 30,
+    bottom: 30,
+    borderRadius: 50
+  },
+  floatingText: {
+    color: 'white',
+    textTransform: 'uppercase',
+    fontWeight: 'bold',
+    fontSize: 21
+  }
+});
+
+class Corrections extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      corrections: this.props.navigation.getParam('corrections', [])
+    };
+  }
+
+  renderItem = (item) => {
+    if (item.type) {
+      return (
+        <View style={styles.item}>
+          <View style={styles.imgContainer}>
+            <ImageBackground
+              style={styles.imgQuestion}
+              source={item.question}
+            />
+          </View>
+          <View style={styles.row}>
+            <MaterialCommunityIcons // https://icons.expo.fyi/
+              name="close-circle"
+              size={50}
+              color="#FF0A3f"
+              style={{paddingHorizontal: 15, marginTop: 10}}
+            />
+
+            <View style={styles.txtContainerSmall}>
+              <Text style={styles.txtQuestionSmall}>{item.incorrect}</Text>
+            </View>
+          </View>
+          <View style={styles.row}>
+            <MaterialCommunityIcons // https://icons.expo.fyi/
+              name="check-circle"
+              size={50}
+              color="#6DC067"
+              style={{paddingHorizontal: 15, marginTop: 10}}
+            />
+
+            <View style={styles.txtContainerSmall}>
+              <Text style={styles.txtQuestionSmall}>{item.correct}</Text>
+            </View>
+          </View>
+        </View>
+      );
+    }
+    return (
+      <View style={styles.item}>
+        <View style={styles.txtContainer}>
+          <Text style={styles.txtQuestion}>{item.question}</Text>
+        </View>
+        <View style={styles.row}>
+          <MaterialCommunityIcons // https://icons.expo.fyi/
+            name="close-circle"
+            size={50}
+            color="#FF0A3f"
+            style={{paddingHorizontal: 15, marginTop: 10}}
+          />
+          <View style={styles.imgContainerSmall}>
+            <ImageBackground
+              style={styles.imgQuestionSmall}
+              source={item.incorrect}
+            />
+          </View>
+        </View>
+        <View style={styles.row}>
+          <MaterialCommunityIcons // https://icons.expo.fyi/
+            name="check-circle"
+            size={50}
+            color="#6DC067"
+            style={{paddingHorizontal: 15, marginTop: 10}}
+          />
+          <View style={styles.imgContainerSmall}>
+            <ImageBackground
+              style={styles.imgQuestionSmall}
+              source={item.correct}
+            />
+          </View>
+        </View>
+      </View>
+    );
+  };
+
+  render() {
+    return (
+      <SafeAreaView style={styles.container}>
+        <StatusBar barStyle="dark-content" />
+        <FlatList
+          data={this.state.corrections}
+          renderItem={({item}) => this.renderItem(item)}
+          keyExtractor={(item) => item.key}
+        />
+        <TouchableOpacity
+          activeOpacity={0.85}
+          onPress={() => this.props.navigation.navigate('QuizIndex')}
+          style={styles.floatingButton}
+        >
+          <Text style={styles.floatingText}>Back to home</Text>
+        </TouchableOpacity>
+      </SafeAreaView>
+    );
+  }
+}
+
+export default Corrections;

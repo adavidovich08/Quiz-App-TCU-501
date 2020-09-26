@@ -1,5 +1,7 @@
 import React from 'react';
-import {View, StyleSheet, Dimensions, Image} from 'react-native';
+import {View, StyleSheet, Dimensions} from 'react-native';
+
+import {MaterialCommunityIcons} from '@expo/vector-icons';
 
 const screen = Dimensions.get('window');
 
@@ -13,43 +15,29 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center'
-  },
-  circle: {
-    backgroundColor: '#FF0A3F', // Red (incorrect)
-    width: screen.width / 2,
-    height: screen.width / 2,
-    borderRadius: screen.width / 2,
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-  circleCorrect: {
-    backgroundColor: '#6DC067' // Green (correct)
-  },
-  icon: {
-    width: screen.width / 3
   }
 });
 
 export const Alert = ({correct, visible}) => {
   if (!visible) return null;
 
-  // Chooses check if correct and close if incorrect
-  const icon = correct
-    ? require('../assets/check.png')
-    : require('../assets/close.png');
-
-  const circleStyles = [styles.circle];
-
-  // If correct, changes icon color to green
+  let iconName = '';
+  let iconColor = '';
   if (correct) {
-    circleStyles.push(styles.circleCorrect);
+    iconName = 'check-circle';
+    iconColor = '#6DC067';
+  } else {
+    iconName = 'close-circle';
+    iconColor = '#FF0A3F';
   }
 
   return (
     <View style={styles.container}>
-      <View style={circleStyles}>
-        <Image source={icon} style={styles.icon} resizeMode="contain" />
-      </View>
+      <MaterialCommunityIcons // https://icons.expo.fyi/
+        name={iconName}
+        size={screen.width / 2}
+        color={iconColor}
+      />
     </View>
   );
 };

@@ -3,6 +3,7 @@ import {createStackNavigator} from 'react-navigation-stack';
 import QuizIndex from './screens/QuizIndex';
 import Quiz from './screens/Quiz';
 import HighScore from './screens/HighScore';
+import Corrections from './screens/Corrections';
 
 const MainStack = createStackNavigator({
   QuizIndex: {
@@ -31,6 +32,18 @@ const MainStack = createStackNavigator({
         backgroundColor: '#FFF',
         borderBottomColor: '#FFF'
       }
+    }
+  },
+  Corrections: {
+    screen: Corrections,
+    navigationOptions: {
+      headerTitle: 'Corrections',
+      headerTintColor: '#000',
+      headerStyle: {
+        backgroundColor: '#FFF',
+        borderBottomColor: '#FFF'
+      },
+      headerLeft: () => null
     }
   }
 });
