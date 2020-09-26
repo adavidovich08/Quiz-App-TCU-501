@@ -117,6 +117,41 @@ class Corrections extends React.Component {
     };
   }
 
+  renderSelectedText = (text) => {
+    if (text === '') {
+      return (
+        <View style={styles.txtContainerSmall}>
+          <Text style={styles.txtQuestionSmall}>
+            You ran out of time before you selected an option.
+          </Text>
+        </View>
+      );
+    }
+    return (
+      <View style={styles.txtContainerSmall}>
+        <Text style={styles.txtQuestionSmall}>{text}</Text>
+      </View>
+    );
+  };
+
+  renderSelectedImage = (image) => {
+    if (image === '') {
+      return (
+        <View style={styles.imgContainerSmall}>
+          <ImageBackground
+            style={styles.imgQuestionSmall}
+            source={require('../assets/image-not-found.jpg')}
+          />
+        </View>
+      );
+    }
+    return (
+      <View style={styles.imgContainerSmall}>
+        <ImageBackground style={styles.imgQuestionSmall} source={image} />
+      </View>
+    );
+  };
+
   renderItem = (item) => {
     if (item.type) {
       return (
@@ -135,9 +170,7 @@ class Corrections extends React.Component {
               style={{paddingHorizontal: 15, marginTop: 10}}
             />
 
-            <View style={styles.txtContainerSmall}>
-              <Text style={styles.txtQuestionSmall}>{item.incorrect}</Text>
-            </View>
+            {this.renderSelectedText(item.incorrect)}
           </View>
           <View style={styles.row}>
             <MaterialCommunityIcons // https://icons.expo.fyi/
@@ -166,12 +199,7 @@ class Corrections extends React.Component {
             color="#FF0A3f"
             style={{paddingHorizontal: 15, marginTop: 10}}
           />
-          <View style={styles.imgContainerSmall}>
-            <ImageBackground
-              style={styles.imgQuestionSmall}
-              source={item.incorrect}
-            />
-          </View>
+          {this.renderSelectedImage(item.incorrect)}
         </View>
         <View style={styles.row}>
           <MaterialCommunityIcons // https://icons.expo.fyi/
