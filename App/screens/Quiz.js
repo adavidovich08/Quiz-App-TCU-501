@@ -89,6 +89,10 @@ class Quiz extends React.Component {
     super(props);
 
     this.playbackInstance = null;
+    this.currentHighscore = '0';
+
+    // this.clearAll();
+    this.getValue(this.props.navigation.getParam('title'));
 
     this.state = {
       correctCount: 0,
@@ -127,6 +131,24 @@ class Quiz extends React.Component {
   }
 
   /**
+   * Gets the highscore of the quiz with this key
+   * @param {string} key
+   */
+  getValue = async (key) => {
+    try {
+      let scoreDB = await AsyncStorage.getItem(key);
+      if (scoreDB === null) {
+        scoreDB = '0';
+      }
+      this.currentHighscore = scoreDB;
+      return 1;
+    } catch (e) {
+      console.log('Read Error.');
+      return 0;
+    }
+  };
+
+  /**
    * Stores a pair of key and value in the local storage
    * @param {string} key
    * @param {string} value
@@ -136,6 +158,17 @@ class Quiz extends React.Component {
       await AsyncStorage.setItem(key, value);
     } catch (e) {
       console.log('Save Error.');
+    }
+  };
+
+  /**
+   * Clears de local storage
+   */
+  clearAll = async () => {
+    try {
+      await AsyncStorage.clear();
+    } catch (e) {
+      console.log('Delete Error.');
     }
   };
 
@@ -184,7 +217,8 @@ class Quiz extends React.Component {
             question: correctionQuestion,
             incorrect: incorrectAnswer,
             correct: correctAnswer,
-            key: state.questions[state.activeQuestionIndex].correctShortType
+            key: state.questions[state.activeQuestionIndex].correctShortType,
+            highscore: '0'
           };
           state.corrections.push(correctionItem);
           nextState.answerCorrect = false;
@@ -207,8 +241,18 @@ class Quiz extends React.Component {
       const nextIndex = state.activeQuestionIndex + 1;
 
       if (nextIndex >= state.totalCount) {
+        const quizName = this.props.navigation.getParam('title');
+        let ifHS = false;
+        if (this.currentHighscore < state.score) {
+          this.setValue(quizName, state.score.toString());
+          ifHS = true;
+        }
         return this.props.navigation.navigate('Corrections', {
-          corrections: state.corrections
+          corrections: state.corrections,
+          score: state.score,
+          ifHighscore: ifHS,
+          correct: state.correctCount,
+          total: state.totalCount
         });
       }
 
@@ -346,16 +390,12 @@ class Quiz extends React.Component {
         <StatusBar barStyle="light-content" />
         <SafeAreaView style={styles.safeArea}>
           {this.renderBody(question)}
-
           <View style={styles.bottomViewStyle}>
             <Text style={styles.text}>
               {`${this.state.correctCount}/${this.state.totalCount}`}
             </Text>
             {this.renderCountdown()}
-            <Text style={styles.text}>
-              {this.state.score}
-              pts
-            </Text>
+            <Text style={styles.text}>{this.state.score} pts</Text>
           </View>
         </SafeAreaView>
         <Alert

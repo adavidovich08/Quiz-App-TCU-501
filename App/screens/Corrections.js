@@ -29,6 +29,35 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 10
   },
+  newHighscoreText: {
+    backgroundColor: '#B6C3CC',
+    color: '#6DC067',
+    textAlign: 'center',
+    textTransform: 'uppercase',
+    fontWeight: '900',
+    paddingTop: 20,
+    fontSize: 25,
+    letterSpacing: 2
+  },
+  scoreText: {
+    backgroundColor: '#B6C3CC',
+    color: '#000',
+    textAlign: 'center',
+    fontWeight: '600',
+    padding: 20,
+    fontSize: 25,
+    letterSpacing: 0.75
+  },
+  correctCountText: {
+    backgroundColor: '#B6C3CC',
+    color: '#000',
+    textAlign: 'center',
+    fontWeight: '400',
+    paddingBottom: 20,
+    fontSize: 20,
+    letterSpacing: 2,
+    marginBottom: 5
+  },
   imgContainer: {
     justifyContent: 'center',
     alignItems: 'center',
@@ -113,7 +142,10 @@ class Corrections extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      corrections: this.props.navigation.getParam('corrections', [])
+      corrections: this.props.navigation.getParam('corrections', []),
+      score: this.props.navigation.getParam('score'),
+      correct: this.props.navigation.getParam('correct'),
+      total: this.props.navigation.getParam('total')
     };
   }
 
@@ -150,6 +182,13 @@ class Corrections extends React.Component {
         <ImageBackground style={styles.imgQuestionSmall} source={image} />
       </View>
     );
+  };
+
+  renderIfHighscore = () => {
+    if (this.props.navigation.getParam('ifHighscore')) {
+      return <Text style={styles.newHighscoreText}>new high score!!!</Text>;
+    }
+    return null;
   };
 
   renderItem = (item) => {
@@ -223,6 +262,13 @@ class Corrections extends React.Component {
     return (
       <SafeAreaView style={styles.container}>
         <StatusBar barStyle="dark-content" />
+        {this.renderIfHighscore()}
+        <Text style={styles.scoreText}>
+          You scored {this.state.score} points!
+        </Text>
+        <Text style={styles.correctCountText}>
+          {this.state.correct}/{this.state.total} correct answers
+        </Text>
         <FlatList
           data={this.state.corrections}
           renderItem={({item}) => this.renderItem(item)}
