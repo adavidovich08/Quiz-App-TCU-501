@@ -8,6 +8,7 @@ import Corrections from './screens/Corrections';
 const MainStack = createStackNavigator({
   QuizIndex: {
     screen: QuizIndex,
+    backgroundColor: '#fff',
     navigationOptions: {
       headerTitle: 'Quizzes'
     }

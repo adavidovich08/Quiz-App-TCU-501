@@ -247,6 +247,7 @@ class Quiz extends React.Component {
           this.setValue(quizName, state.score.toString());
           ifHS = true;
         }
+        // this.playbackInstance.unloadAsync();
         return this.props.navigation.navigate('Corrections', {
           corrections: state.corrections,
           score: state.score,

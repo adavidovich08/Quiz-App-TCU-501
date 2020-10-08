@@ -5,7 +5,8 @@ import {
   TouchableOpacity,
   Text,
   View,
-  StyleSheet
+  StyleSheet,
+  Image
 } from 'react-native';
 
 import organsQuestions from '../data/organs';
@@ -20,6 +21,9 @@ const shuffleQuestions = (questions) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1
+  },
+  scrollView: {
+    backgroundColor: '#FFFFFF'
   },
   floatingButton: {
     position: 'absolute',
@@ -41,8 +45,18 @@ const styles = StyleSheet.create({
   copyrightText: {
     textAlign: 'center',
     marginTop: 10,
+    marginBottom: 0,
     fontSize: 12.5,
     letterSpacing: 1.5
+  },
+  logoImgContainer: {
+    marginTop: 10,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  logoImg: {
+    width: 90,
+    height: 120
   }
 });
 
@@ -55,7 +69,7 @@ class QuizIndex extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <ScrollView>
+        <ScrollView style={styles.scrollView}>
           <StatusBar barStyle="dark-content" />
           <RowItem
             name="Organs (5th Grade)"
@@ -82,8 +96,14 @@ class QuizIndex extends React.Component {
             }
           />
           <Text style={styles.copyrightText}>
-            {'\u00A9'} 2020 by TCU-501, UCR
+            {'\u00A9'} 2020 Developed by Andrés Davidovich for
           </Text>
+          <View style={styles.logoImgContainer}>
+            <Image
+              style={styles.logoImg}
+              source={require('../assets/logo-tcu-501.jpg')}
+            />
+          </View>
         </ScrollView>
         <TouchableOpacity
           activeOpacity={0.85}

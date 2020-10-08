@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
     flex: 1
   },
   item: {
-    backgroundColor: '#B6C3CC',
+    backgroundColor: '#568A9F',
     paddingHorizontal: 20,
     paddingVertical: 15,
     marginBottom: 5
@@ -25,12 +25,12 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    backgroundColor: '#B6C3CC',
+    backgroundColor: '#568A9F',
     paddingHorizontal: 10,
     paddingVertical: 10
   },
   newHighscoreText: {
-    backgroundColor: '#B6C3CC',
+    backgroundColor: '#568A9F',
     color: '#6DC067',
     textAlign: 'center',
     textTransform: 'uppercase',
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     letterSpacing: 2
   },
   scoreText: {
-    backgroundColor: '#B6C3CC',
+    backgroundColor: '#568A9F',
     color: '#000',
     textAlign: 'center',
     fontWeight: '600',
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     letterSpacing: 0.75
   },
   correctCountText: {
-    backgroundColor: '#B6C3CC',
+    backgroundColor: '#568A9F',
     color: '#000',
     textAlign: 'center',
     fontWeight: '400',
