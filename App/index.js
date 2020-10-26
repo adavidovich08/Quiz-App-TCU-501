@@ -1,17 +1,25 @@
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
+import GradeIndex from './screens/GradeIndex';
 import QuizIndex from './screens/QuizIndex';
 import Quiz from './screens/Quiz';
 import HighScore from './screens/HighScore';
 import Corrections from './screens/Corrections';
 
 const MainStack = createStackNavigator({
-  QuizIndex: {
-    screen: QuizIndex,
+  GradeIndex: {
+    screen: GradeIndex,
     backgroundColor: '#fff',
     navigationOptions: {
       headerTitle: 'Quizzes'
     }
+  },
+  QuizIndex: {
+    screen: QuizIndex,
+    backgroundColor: '#fff',
+    navigationOptions: ({navigation}) => ({
+      headerTitle: navigation.getParam('title')
+    })
   },
   Quiz: {
     screen: Quiz,

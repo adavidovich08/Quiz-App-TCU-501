@@ -98,16 +98,29 @@ class Quiz extends React.Component {
       correctCount: 0,
       questions: this.props.navigation.getParam('questions', []),
       totalCount: this.props.navigation.getParam('questions', []).length,
+      quizData: this.props.navigation.getParam('quizData'),
+      quizType: this.props.navigation.getParam('quizData').quizType,
       activeQuestionIndex: 0,
       score: 0,
       answered: false,
       answerCorrect: false,
-      imgOrFnc: false,
+      imgOrFnc: false, // False = txtQ || shrtQ, True = imgQ || lngQ
       preparing: false,
       idCC: 1, // Countdown doesn't work if I don't change this ID
       timeLeft: 20,
       corrections: []
     };
+
+    /* this.quizData = this.props.navigation.getParam('quizData');
+    this.quizType = this.quizData.quizType; */
+
+    if(this.state.quizType === 'txtImg'){
+      this.txtQimgA = this.state.quizData.txtQimgA;
+      this.imgQtxtA = this.state.quizData.imgQtxtA;
+    }else if(this.state.quizType === 'txtTxt'){
+      this.shrtQlngA = this.state.quizData.shrtQlngA;
+      this.lngQshrtA = this.state.quizData.lngQshrtA;
+    }
   }
 
   // Sets the audio player settings
@@ -253,7 +266,8 @@ class Quiz extends React.Component {
           score: state.score,
           ifHighscore: ifHS,
           correct: state.correctCount,
-          total: state.totalCount
+          total: state.totalCount,
+          quizType: this.quizType
         });
       }
 
@@ -327,7 +341,7 @@ class Quiz extends React.Component {
     return null;
   }
 
-  renderBody(question) {
+  rendertxtImgQuizBody(question) {
     if (this.state.imgOrFnc) {
       // Picture question
       return (
@@ -341,7 +355,7 @@ class Quiz extends React.Component {
             </ImageBackground>
           </View>
 
-          <Text style={styles.text}> Which function matches the picture?</Text>
+          <Text style={styles.text}> {this.imgQtxtA} </Text>
 
           <ButtonContainer>
             {this.shuffleAnswers(question.answers).map((answer) => (
@@ -362,7 +376,7 @@ class Quiz extends React.Component {
           <Text style={styles.txtQuestion}>{question.correctLongType}</Text>
         </View>
 
-        <Text style={styles.text}> Which picture matches the function? </Text>
+        <Text style={styles.text}> {this.txtQimgA} </Text>
 
         <ButtonContainer>
           {this.shuffleAnswers(question.answers).map((answer) => (
@@ -376,6 +390,58 @@ class Quiz extends React.Component {
         </ButtonContainer>
       </View>
     );
+  }
+
+  rendertxtTxtQuizBody(question) {
+    if (this.state.imgOrFnc) {
+      // Long text question
+      return (
+        <View>
+          <View style={styles.txtContainer}>
+            <Text style={styles.txtQuestion}>{question.correctLongType}</Text>
+          </View>
+
+          <Text style={styles.text}> {this.lngQshrtA} </Text>
+
+          <ButtonContainer>
+            {this.shuffleAnswers(question.answers).map((answer) => (
+              <Button
+                key={answer.id}
+                txtAnswer={answer.shortType}
+                onPress={() => this.answer(answer)}
+              />
+            ))}
+          </ButtonContainer>
+        </View>
+      );
+    }
+    // Short text question
+    return (
+      <View>
+        <View style={styles.txtContainer}>
+          <Text style={styles.txtQuestion}>{question.correctShortType}</Text>
+        </View>
+
+        <Text style={styles.text}> {this.shrtQlngA} </Text>
+
+        <ButtonContainer>
+          {this.shuffleAnswers(question.answers).map((answer) => (
+            <Button
+              key={answer.id}
+              txtAnswer={answer.longType}
+              onPress={() => this.answer(answer)}
+            />
+          ))}
+        </ButtonContainer>
+      </View>
+    );
+  }
+
+  renderBody(question) {
+    if(this.state.quizType === 'txtImg'){
+      return this.rendertxtImgQuizBody(question);
+    }
+    return this.rendertxtTxtQuizBody(question);
   }
 
   render() {

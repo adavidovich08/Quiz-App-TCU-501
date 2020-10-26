@@ -6,6 +6,11 @@
  */
 const organs = [
   {
+    quizType: 'txtImg',
+    txtQimgA: 'Which picture matches the function?',
+    imgQtxtA: 'Which function matches the picture?'
+  },
+  {
     correctImg: require('../assets/brain.jpg'),
     correctLongType:
       'It is the boss of your body. It controls everything you do, even when you are asleep.',

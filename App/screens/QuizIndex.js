@@ -2,14 +2,12 @@ import React from 'react';
 import {
   ScrollView,
   StatusBar,
-  TouchableOpacity,
-  Text,
   View,
-  StyleSheet,
-  Image
+  StyleSheet
 } from 'react-native';
 
 import organsQuestions from '../data/organs';
+import pruebaQuestions from '../data/prueba';
 import {RowItem} from '../components/RowItem';
 
 const shuffleQuestions = (questions) => {
@@ -24,39 +22,6 @@ const styles = StyleSheet.create({
   },
   scrollView: {
     backgroundColor: '#FFFFFF'
-  },
-  floatingButton: {
-    position: 'absolute',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#3D3D3D',
-    width: 200,
-    height: 50,
-    right: 30,
-    bottom: 30,
-    borderRadius: 50
-  },
-  floatingText: {
-    color: 'white',
-    textTransform: 'uppercase',
-    fontWeight: 'bold',
-    fontSize: 21
-  },
-  copyrightText: {
-    textAlign: 'center',
-    marginTop: 10,
-    marginBottom: 0,
-    fontSize: 12.5,
-    letterSpacing: 1.5
-  },
-  logoImgContainer: {
-    marginTop: 10,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  logoImg: {
-    width: 90,
-    height: 120
   }
 });
 
@@ -78,7 +43,8 @@ class QuizIndex extends React.Component {
             onPress={() =>
               this.props.navigation.navigate('Quiz', {
                 title: 'Organs',
-                questions: shuffleQuestions(organsQuestions),
+                questions: shuffleQuestions(organsQuestions.slice(1)),
+                quizData: organsQuestions[0],
                 color: '#00c0f3'
               })
             }
@@ -90,28 +56,13 @@ class QuizIndex extends React.Component {
             onPress={() =>
               this.props.navigation.navigate('Quiz', {
                 title: 'Placeholder',
-                questions: shuffleQuestions(organsQuestions),
+                questions: shuffleQuestions(pruebaQuestions.slice(1)),
+                quizData: pruebaQuestions[0],
                 color: '#bad2ad'
               })
             }
           />
-          <Text style={styles.copyrightText}>
-            {'\u00A9'} 2020 Developed by Andrés Davidovich for
-          </Text>
-          <View style={styles.logoImgContainer}>
-            <Image
-              style={styles.logoImg}
-              source={require('../assets/logo-tcu-501.jpg')}
-            />
-          </View>
         </ScrollView>
-        <TouchableOpacity
-          activeOpacity={0.85}
-          onPress={() => this.props.navigation.navigate('HighScore')}
-          style={styles.floatingButton}
-        >
-          <Text style={styles.floatingText}>high scores</Text>
-        </TouchableOpacity>
       </View>
     );
   }

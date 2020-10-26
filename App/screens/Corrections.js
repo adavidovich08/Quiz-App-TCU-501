@@ -145,7 +145,8 @@ class Corrections extends React.Component {
       corrections: this.props.navigation.getParam('corrections', []),
       score: this.props.navigation.getParam('score'),
       correct: this.props.navigation.getParam('correct'),
-      total: this.props.navigation.getParam('total')
+      total: this.props.navigation.getParam('total'),
+      // quizType: this.props.navigation.getParam('quizType')
     };
   }
 
@@ -276,7 +277,7 @@ class Corrections extends React.Component {
         />
         <TouchableOpacity
           activeOpacity={0.85}
-          onPress={() => this.props.navigation.navigate('QuizIndex')}
+          onPress={() => this.props.navigation.navigate('GradeIndex')}
           style={styles.floatingButton}
         >
           <Text style={styles.floatingText}>Back to home</Text>
