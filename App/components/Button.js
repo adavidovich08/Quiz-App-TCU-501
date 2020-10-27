@@ -29,6 +29,13 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     fontSize: 18
   },
+  shortTxtAnswer: {
+    color: '#fff',
+    textAlign: 'center',
+    fontWeight: '600',
+    fontSize: 20,
+    paddingVertical: 10
+  },
   imgAnswer: {
     borderRadius: 10,
     overflow: 'hidden',
@@ -51,10 +58,17 @@ const styles = StyleSheet.create({
   }
 });
 
-// Used when answers are in text form
+// Used when answers are in long text form
 export const Button = ({txtAnswer, onPress = () => {}}) => (
   <TouchableOpacity onPress={onPress} style={styles.button}>
     <Text style={styles.txtAnswer}>{txtAnswer}</Text>
+  </TouchableOpacity>
+);
+
+// Used when answers are in short text form
+export const ButtonShortText = ({txtAnswer, onPress = () => {}}) => (
+  <TouchableOpacity onPress={onPress} style={styles.button}>
+    <Text style={styles.shortTxtAnswer}>{txtAnswer}</Text>
   </TouchableOpacity>
 );
 

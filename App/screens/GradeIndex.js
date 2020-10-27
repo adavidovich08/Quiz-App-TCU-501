@@ -11,6 +11,10 @@ import {
 
 import {RowItem} from '../components/RowItem';
 
+import fourth from '../data/fourth';
+import fifth from '../data/fifth';
+import sixth from '../data/sixth';
+
 const styles = StyleSheet.create({
   container: {
     flex: 1
@@ -65,43 +69,13 @@ class GradeIndex extends React.Component {
         <ScrollView style={styles.scrollView}>
           <StatusBar barStyle="dark-content" />
           <RowItem
-            name="First Grade"
-            color="#00c0f3"
-            iconName="numeric-1-box"
-            onPress={() =>
-              this.props.navigation.navigate('QuizIndex', {
-                title: 'First Grade'
-              })
-            }
-          />
-          <RowItem
-            name="Second Grade"
-            color="#00c0f3"
-            iconName="numeric-2-box"
-            onPress={() =>
-              this.props.navigation.navigate('QuizIndex', {
-                title: 'Second Grade'
-              })
-            }
-          />
-          <RowItem
-            name="Third Grade"
-            color="#00c0f3"
-            iconName="numeric-3-box"
-            onPress={() =>
-              this.props.navigation.navigate('QuizIndex', {
-                title: 'Third Grade'
-              })
-            }
-          />
-          <RowItem
             name="Fourth Grade"
             color="#00c0f3"
             iconName="numeric-4-box"
             onPress={() =>
               this.props.navigation.navigate('QuizIndex', {
                 title: 'Fourth Grade',
-                // questions: shuffleQuestions(organsQuestions),
+                grade: fourth
               })
             }
           />
@@ -112,7 +86,7 @@ class GradeIndex extends React.Component {
             onPress={() =>
               this.props.navigation.navigate('QuizIndex', {
                 title: 'Fifth Grade',
-                // questions: shuffleQuestions(organsQuestions),
+                grade: fifth
               })
             }
           />
@@ -123,7 +97,7 @@ class GradeIndex extends React.Component {
             onPress={() =>
               this.props.navigation.navigate('QuizIndex', {
                 title: 'Sixth Grade',
-                // questions: shuffleQuestions(organsQuestions),
+                grade: sixth
               })
             }
           />

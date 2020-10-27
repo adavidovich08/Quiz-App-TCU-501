@@ -13,7 +13,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 
 import {Audio} from 'expo-av';
 
-import {Button, ButtonContainer, ButtonImg} from '../components/Button';
+import {Button, ButtonContainer, ButtonImg, ButtonShortText} from '../components/Button';
 import {Alert} from '../components/Alert';
 
 const styles = StyleSheet.create({
@@ -207,13 +207,18 @@ class Quiz extends React.Component {
           nextState.score = state.score + 500 + timeBasedScore;
           nextState.answerCorrect = true;
         } else {
-          let correctionQuestion =
-            state.questions[state.activeQuestionIndex].correctLongType;
-          let correctAnswer =
-            state.questions[state.activeQuestionIndex].correctImg;
+          let correctionQuestion = state.questions[state.activeQuestionIndex].correctLongType;
+          let correctAnswer = state.questions[state.activeQuestionIndex].correctImg;
           let incorrectAnswer = '';
           if (selectedAnswer.incorrectAnswer !== '') {
             incorrectAnswer = selectedAnswer.img;
+          }
+          if(state.quizType === 'txtTxt'){
+            correctionQuestion = state.questions[state.activeQuestionIndex].correctShortType;
+            correctAnswer = state.questions[state.activeQuestionIndex].correctLongType;
+            if (selectedAnswer.incorrectAnswer !== '') {
+              incorrectAnswer = selectedAnswer.longType;
+            }
           }
           if (state.imgOrFnc) {
             correctionQuestion =
@@ -223,6 +228,13 @@ class Quiz extends React.Component {
 
             if (selectedAnswer.incorrectAnswer !== '') {
               incorrectAnswer = selectedAnswer.longType;
+            }
+            if(state.quizType === 'txtTxt'){
+              correctionQuestion = state.questions[state.activeQuestionIndex].correctLongType;
+              correctAnswer = state.questions[state.activeQuestionIndex].correctShortType;
+              if (selectedAnswer.incorrectAnswer !== '') {
+                incorrectAnswer = selectedAnswer.shortType;
+              }
             }
           }
           const correctionItem = {
@@ -405,7 +417,7 @@ class Quiz extends React.Component {
 
           <ButtonContainer>
             {this.shuffleAnswers(question.answers).map((answer) => (
-              <Button
+              <ButtonShortText
                 key={answer.id}
                 txtAnswer={answer.shortType}
                 onPress={() => this.answer(answer)}

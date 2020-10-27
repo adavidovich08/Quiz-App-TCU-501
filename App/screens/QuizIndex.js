@@ -26,42 +26,47 @@ const styles = StyleSheet.create({
 });
 
 class QuizIndex extends React.Component {
-  // eslint-disable-next-line no-useless-constructor
-  constructor() {
-    super();
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      quizArray: this.props.navigation.getParam('grade', [])
+    }
   }
+
+  returnQuestions = (name) => {
+    if(name === 'Organs'){
+      return organsQuestions;
+    }
+    return pruebaQuestions;
+  };
 
   render() {
     return (
       <View style={styles.container}>
         <ScrollView style={styles.scrollView}>
           <StatusBar barStyle="dark-content" />
-          <RowItem
-            name="Organs (5th Grade)"
-            color="#00c0f3"
-            iconName="brain"
-            onPress={() =>
-              this.props.navigation.navigate('Quiz', {
-                title: 'Organs',
-                questions: shuffleQuestions(organsQuestions.slice(1)),
-                quizData: organsQuestions[0],
-                color: '#00c0f3'
-              })
-            }
-          />
-          <RowItem
-            name="Placeholder"
-            color="#bad2ad"
-            iconName="lead-pencil"
-            onPress={() =>
-              this.props.navigation.navigate('Quiz', {
-                title: 'Placeholder',
-                questions: shuffleQuestions(pruebaQuestions.slice(1)),
-                quizData: pruebaQuestions[0],
-                color: '#bad2ad'
-              })
-            }
-          />
+
+          {this.state.quizArray.map((quiz) => {
+            return (
+              <RowItem
+                key={quiz.name}
+                name={quiz.name}
+                color={quiz.color}
+                iconName={quiz.icon}
+                onPress={() =>
+                  this.props.navigation.navigate('Quiz', {
+                    title: quiz.name,
+                    questions: shuffleQuestions(this.returnQuestions(quiz.name).slice(1)),
+                    quizData: this.returnQuestions(quiz.name)[0],
+                    color: quiz.color
+                  })
+                }
+              />
+            );
+          })}
+
         </ScrollView>
       </View>
     );

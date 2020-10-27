@@ -146,7 +146,7 @@ class Corrections extends React.Component {
       score: this.props.navigation.getParam('score'),
       correct: this.props.navigation.getParam('correct'),
       total: this.props.navigation.getParam('total'),
-      // quizType: this.props.navigation.getParam('quizType')
+      quizType: this.props.navigation.getParam('quizType')
     };
   }
 
@@ -192,7 +192,7 @@ class Corrections extends React.Component {
     return null;
   };
 
-  renderItem = (item) => {
+  renderItemTxtImg = (item) => {
     if (item.type) {
       return (
         <View style={styles.item}>
@@ -257,6 +257,44 @@ class Corrections extends React.Component {
         </View>
       </View>
     );
+  };
+
+  renderItemTxtTxt = (item) => {
+    return (
+      <View style={styles.item}>
+        <View style={styles.txtContainer}>
+          <Text style={styles.txtQuestion}>{item.question}</Text>
+        </View>
+        <View style={styles.row}>
+          <MaterialCommunityIcons // https://icons.expo.fyi/
+            name="close-circle"
+            size={50}
+            color="#FF0A3f"
+            style={{paddingHorizontal: 15, marginTop: 10}}
+          />
+          {this.renderSelectedText(item.incorrect)}
+        </View>
+        <View style={styles.row}>
+          <MaterialCommunityIcons // https://icons.expo.fyi/
+            name="check-circle"
+            size={50}
+            color="#6DC067"
+            style={{paddingHorizontal: 15, marginTop: 10}}
+          />
+
+          <View style={styles.txtContainerSmall}>
+            <Text style={styles.txtQuestionSmall}>{item.correct}</Text>
+          </View>
+        </View>
+      </View>
+    );
+  };
+
+  renderItem = (item) => {
+    if (this.state.quizType === 'txtImg') {
+      return this.renderItemTxtImg(item);
+    }
+    return this.renderItemTxtTxt(item);
   };
 
   render() {
