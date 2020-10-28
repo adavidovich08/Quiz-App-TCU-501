@@ -144,7 +144,7 @@ class Corrections extends React.Component {
     this.state = {
       corrections: this.props.navigation.getParam('corrections', []),
       score: this.props.navigation.getParam('score'),
-      correct: this.props.navigation.getParam('correct'),
+      correctAmnt: this.props.navigation.getParam('correct'),
       total: this.props.navigation.getParam('total'),
       quizType: this.props.navigation.getParam('quizType')
     };
@@ -306,7 +306,7 @@ class Corrections extends React.Component {
           You scored {this.state.score} points!
         </Text>
         <Text style={styles.correctCountText}>
-          {this.state.correct}/{this.state.total} correct answers
+          {this.state.correctAmnt}/{this.state.total} correct answers
         </Text>
         <FlatList
           data={this.state.corrections}

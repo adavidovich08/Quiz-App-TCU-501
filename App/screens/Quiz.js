@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import CountDown from 'react-native-countdown-component';
 
-import AsyncStorage from '@react-native-community/async-storage';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import {Audio} from 'expo-av';
 
@@ -111,9 +111,6 @@ class Quiz extends React.Component {
       corrections: [],
       countdownRunning: true
     };
-
-    /* this.quizData = this.props.navigation.getParam('quizData');
-    this.quizType = this.quizData.quizType; */
 
     if(this.state.quizType === 'txtImg'){
       this.txtQimgA = this.state.quizData.txtQimgA;
@@ -280,7 +277,7 @@ class Quiz extends React.Component {
           ifHighscore: ifHS,
           correct: state.correctCount,
           total: state.totalCount,
-          quizType: this.quizType
+          quizType: this.state.quizType
         });
       }
 

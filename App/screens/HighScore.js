@@ -8,7 +8,7 @@ import {
   SafeAreaView
 } from 'react-native';
 
-import AsyncStorage from '@react-native-community/async-storage';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {MaterialCommunityIcons} from '@expo/vector-icons';
 
 import fourth from '../data/fourth';
@@ -44,12 +44,22 @@ class HighScore extends React.Component {
   constructor() {
     super();
     this.state = {
-      data: []
+      data: [],
+      loading: true
     };
+    this.fillData();
+  }
 
+  fillData(){
     fourth.forEach(quiz => {
       this.getValue(quiz);
     });
+  }
+
+  componentDidMount(){
+    setTimeout( () => {
+      this.setState({loading: false});
+    },100);
   }
 
   /**
@@ -73,6 +83,9 @@ class HighScore extends React.Component {
   };
 
   render() {
+    if(this.state.loading){
+      return null;
+    }
     return (
       <SafeAreaView style={styles.container}>
         <StatusBar barStyle="dark-content" />
