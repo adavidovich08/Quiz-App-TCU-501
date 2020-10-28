@@ -1,12 +1,12 @@
 const fourth = [
   {
     name: 'Organs',
-    color: '#00c0f3',
+    color: '#005da4',
     icon: 'brain'
   },
   {
     name: 'Prueba',
-    color: '#bad2ad',
+    color: '#005da4',
     icon: 'lead-pencil'
   }
 ];

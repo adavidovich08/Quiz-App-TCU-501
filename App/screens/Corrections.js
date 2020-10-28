@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1
   },
-  item: {
+  itemStyle: {
     backgroundColor: '#568A9F',
     paddingHorizontal: 20,
     paddingVertical: 15,
@@ -167,8 +167,8 @@ class Corrections extends React.Component {
     );
   };
 
-  renderSelectedImage = (image) => {
-    if (image === '') {
+  renderSelectedImage = (item) => {
+    if (item.incorrect === '') {
       return (
         <View style={styles.imgContainerSmall}>
           <ImageBackground
@@ -180,7 +180,7 @@ class Corrections extends React.Component {
     }
     return (
       <View style={styles.imgContainerSmall}>
-        <ImageBackground style={styles.imgQuestionSmall} source={image} />
+        <ImageBackground style={styles.imgQuestionSmall} source={item.incorrect} />
       </View>
     );
   };
@@ -195,7 +195,7 @@ class Corrections extends React.Component {
   renderItemTxtImg = (item) => {
     if (item.type) {
       return (
-        <View style={styles.item}>
+        <View style={styles.itemStyle}>
           <View style={styles.imgContainer}>
             <ImageBackground
               style={styles.imgQuestion}
@@ -228,7 +228,7 @@ class Corrections extends React.Component {
       );
     }
     return (
-      <View style={styles.item}>
+      <View style={styles.itemStyle}>
         <View style={styles.txtContainer}>
           <Text style={styles.txtQuestion}>{item.question}</Text>
         </View>
@@ -239,7 +239,7 @@ class Corrections extends React.Component {
             color="#FF0A3f"
             style={{paddingHorizontal: 15, marginTop: 10}}
           />
-          {this.renderSelectedImage(item.incorrect)}
+          {this.renderSelectedImage(item)}
         </View>
         <View style={styles.row}>
           <MaterialCommunityIcons // https://icons.expo.fyi/
@@ -261,7 +261,7 @@ class Corrections extends React.Component {
 
   renderItemTxtTxt = (item) => {
     return (
-      <View style={styles.item}>
+      <View style={styles.itemStyle}>
         <View style={styles.txtContainer}>
           <Text style={styles.txtQuestion}>{item.question}</Text>
         </View>

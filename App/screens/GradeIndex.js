@@ -70,7 +70,7 @@ class GradeIndex extends React.Component {
           <StatusBar barStyle="dark-content" />
           <RowItem
             name="Fourth Grade"
-            color="#00c0f3"
+            color="#005da4"
             iconName="numeric-4-box"
             onPress={() =>
               this.props.navigation.navigate('QuizIndex', {
@@ -81,7 +81,7 @@ class GradeIndex extends React.Component {
           />
           <RowItem
             name="Fifth Grade"
-            color="#00c0f3"
+            color="#5a445f"
             iconName="numeric-5-box"
             onPress={() =>
               this.props.navigation.navigate('QuizIndex', {
@@ -92,7 +92,7 @@ class GradeIndex extends React.Component {
           />
           <RowItem
             name="Sixth Grade"
-            color="#00c0f3"
+            color="#f37021"
             iconName="numeric-6-box"
             onPress={() =>
               this.props.navigation.navigate('QuizIndex', {

@@ -1,12 +1,12 @@
 const sixth = [
   {
     name: 'Organs',
-    color: '#00c0f3',
+    color: '#f37021',
     icon: 'brain'
   },
   {
     name: 'Prueba',
-    color: '#bad2ad',
+    color: '#f37021',
     icon: 'lead-pencil'
   }
 ];

@@ -108,7 +108,8 @@ class Quiz extends React.Component {
       preparing: false,
       idCC: 1, // Countdown doesn't work if I don't change this ID
       timeLeft: 20,
-      corrections: []
+      corrections: [],
+      countdownRunning: true
     };
 
     /* this.quizData = this.props.navigation.getParam('quizData');
@@ -141,6 +142,7 @@ class Quiz extends React.Component {
 
   componentWillUnmount() {
     this.playbackInstance.unloadAsync();
+    this.setState({ countdownRunning: false });
   }
 
   /**
@@ -242,8 +244,7 @@ class Quiz extends React.Component {
             question: correctionQuestion,
             incorrect: incorrectAnswer,
             correct: correctAnswer,
-            key: state.questions[state.activeQuestionIndex].correctShortType,
-            highscore: '0'
+            key: state.questions[state.activeQuestionIndex].correctShortType
           };
           state.corrections.push(correctionItem);
           nextState.answerCorrect = false;
@@ -335,6 +336,7 @@ class Quiz extends React.Component {
     if (!this.state.preparing) {
       return (
         <CountDown
+          running={this.state.countdownRunning}
           id={this.state.idCC.toString()}
           size={30}
           until={20}

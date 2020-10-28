@@ -1,12 +1,12 @@
 const fifth = [
   {
     name: 'Organs',
-    color: '#00c0f3',
+    color: '#5a445f',
     icon: 'brain'
   },
   {
     name: 'Prueba',
-    color: '#bad2ad',
+    color: '#5a445f',
     icon: 'lead-pencil'
   }
 ];
