@@ -5949,7 +5949,7 @@ react-native-screens@~2.10.1:
   integrity sha512-Z2kKSk4AwWRQNCBmTjViuBQK0/Lx0jc25TZptn/2gKYUCOuVRvCekoA26u0Tsb3BIQ8tWDsZW14OwDlFUXW1aw==
 
 "react-native@https://github.com/expo/react-native/archive/sdk-39.0.3.tar.gz":
-  version "0.63.2"
+  version "0.63.3"
   resolved "https://github.com/expo/react-native/archive/sdk-39.0.3.tar.gz#481924772788f0c04373b2bc2512d92fa264867d"
   dependencies:
     "@babel/runtime" "^7.0.0"

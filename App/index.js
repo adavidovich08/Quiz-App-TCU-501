@@ -30,7 +30,8 @@ const MainStack = createStackNavigator({
       headerStyle: {
         backgroundColor: navigation.getParam('color'),
         borderBottomColor: navigation.getParam('color')
-      }
+      },
+      headerBackTitle: 'Back',
     })
   },
   HighScore: {

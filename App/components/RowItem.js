@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
 
 // Row items of the home screen
 export const RowItem = ({onPress = () => {}, name, color, iconName}) => (
-  <TouchableOpacity onPress={onPress} activeOpacity={0.75}>
+  <TouchableOpacity onPress={onPress} activeOpacity={0.75} delayPressIn={0}>
     <View style={[styles.row, {backgroundColor: color}]}>
       <MaterialCommunityIcons // https://icons.expo.fyi/
         name={iconName}
