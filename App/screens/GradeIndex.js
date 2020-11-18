@@ -102,7 +102,7 @@ class GradeIndex extends React.Component {
             }
           />
           <Text style={styles.copyrightText}>
-            {'\u00A9'} 2020 Developed by Andrés Davidovich for
+            {'\u00A9'} 2020 Created by Andrés Davidovich for
           </Text>
           <View style={styles.logoImgContainer}>
             <Image

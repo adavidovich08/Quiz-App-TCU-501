@@ -27,7 +27,8 @@ const styles = StyleSheet.create({
     color: '#fff',
     textAlign: 'center',
     fontWeight: '600',
-    fontSize: 18
+    fontSize: 18,
+    paddingVertical: 5
   },
   shortTxtAnswer: {
     color: '#fff',
@@ -60,21 +61,36 @@ const styles = StyleSheet.create({
 
 // Used when answers are in long text form
 export const Button = ({txtAnswer, onPress = () => {}}) => (
-  <TouchableOpacity onPress={onPress} activeOpacity={0.75} delayPressIn={0} style={styles.button}>
+  <TouchableOpacity
+    onPress={onPress}
+    activeOpacity={0.75}
+    delayPressIn={0}
+    style={styles.button}
+  >
     <Text style={styles.txtAnswer}>{txtAnswer}</Text>
   </TouchableOpacity>
 );
 
 // Used when answers are in short text form
 export const ButtonShortText = ({txtAnswer, onPress = () => {}}) => (
-  <TouchableOpacity onPress={onPress} activeOpacity={0.75} delayPressIn={0} style={styles.button}>
+  <TouchableOpacity
+    onPress={onPress}
+    activeOpacity={0.75}
+    delayPressIn={0}
+    style={styles.button}
+  >
     <Text style={styles.shortTxtAnswer}>{txtAnswer}</Text>
   </TouchableOpacity>
 );
 
 // Used when answers are in image form
 export const ButtonImg = ({imgAnswer, imgTxt, onPress = () => {}}) => (
-  <TouchableOpacity onPress={onPress} activeOpacity={0.75} delayPressIn={0} style={styles.button}>
+  <TouchableOpacity
+    onPress={onPress}
+    activeOpacity={0.75}
+    delayPressIn={0}
+    style={styles.button}
+  >
     <ImageBackground style={styles.imgAnswer} source={imgAnswer}>
       <Text style={styles.txtOverlay}>{imgTxt}</Text>
     </ImageBackground>

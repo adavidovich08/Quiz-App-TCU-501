@@ -1,12 +1,8 @@
 import React from 'react';
-import {
-  ScrollView,
-  StatusBar,
-  View,
-  StyleSheet
-} from 'react-native';
+import {ScrollView, StatusBar, View, StyleSheet} from 'react-native';
 
 import organsQuestions from '../data/organs';
+import weatherQuestions from '../data/weather';
 import pruebaQuestions from '../data/prueba';
 import {RowItem} from '../components/RowItem';
 
@@ -26,18 +22,19 @@ const styles = StyleSheet.create({
 });
 
 class QuizIndex extends React.Component {
-
   constructor(props) {
     super(props);
 
     this.state = {
       quizArray: this.props.navigation.getParam('grade', [])
-    }
+    };
   }
 
   returnQuestions = (name) => {
-    if(name === 'Organs'){
+    if (name === 'Organs') {
       return organsQuestions;
+    } else if (name === 'Weather Conditions') {
+      return weatherQuestions;
     }
     return pruebaQuestions;
   };
@@ -58,7 +55,9 @@ class QuizIndex extends React.Component {
                 onPress={() =>
                   this.props.navigation.navigate('Quiz', {
                     title: quiz.name,
-                    questions: shuffleQuestions(this.returnQuestions(quiz.name).slice(1)),
+                    questions: shuffleQuestions(
+                      this.returnQuestions(quiz.name).slice(1)
+                    ),
                     quizData: this.returnQuestions(quiz.name)[0],
                     color: quiz.color
                   })
@@ -66,7 +65,6 @@ class QuizIndex extends React.Component {
               />
             );
           })}
-
         </ScrollView>
       </View>
     );

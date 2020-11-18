@@ -12,6 +12,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import {MaterialCommunityIcons} from '@expo/vector-icons';
 
 import fourth from '../data/fourth';
+import fifth from '../data/fifth';
+import sixth from '../data/sixth';
 
 const styles = StyleSheet.create({
   container: {
@@ -50,16 +52,22 @@ class HighScore extends React.Component {
     this.fillData();
   }
 
-  fillData(){
-    fourth.forEach(quiz => {
+  fillData() {
+    fourth.forEach((quiz) => {
       this.getValue(quiz);
     });
+    /* fifth.forEach((quiz) => {
+      this.getValue(quiz);
+    });
+    sixth.forEach((quiz) => {
+      this.getValue(quiz);
+    }); */
   }
 
-  componentDidMount(){
-    setTimeout( () => {
+  componentDidMount() {
+    setTimeout(() => {
       this.setState({loading: false});
-    },100);
+    }, 100);
   }
 
   /**
@@ -73,7 +81,12 @@ class HighScore extends React.Component {
       if (scoreDB === null) {
         scoreDB = '0';
       }
-      const obj = {quizName: quiz.name, score: scoreDB, icon: quiz.icon, color: quiz.color};
+      const obj = {
+        quizName: quiz.name,
+        score: scoreDB,
+        icon: quiz.icon,
+        color: quiz.color
+      };
       this.state.data.push(obj);
       return 1;
     } catch (e) {
@@ -83,7 +96,7 @@ class HighScore extends React.Component {
   };
 
   render() {
-    if(this.state.loading){
+    if (this.state.loading) {
       return null;
     }
     return (

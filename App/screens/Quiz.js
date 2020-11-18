@@ -13,7 +13,12 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import {Audio} from 'expo-av';
 
-import {Button, ButtonContainer, ButtonImg, ButtonShortText} from '../components/Button';
+import {
+  Button,
+  ButtonContainer,
+  ButtonImg,
+  ButtonShortText
+} from '../components/Button';
 import {Alert} from '../components/Alert';
 
 const styles = StyleSheet.create({
@@ -112,10 +117,10 @@ class Quiz extends React.Component {
       countdownRunning: true
     };
 
-    if(this.state.quizType === 'txtImg'){
+    if (this.state.quizType === 'txtImg') {
       this.txtQimgA = this.state.quizData.txtQimgA;
       this.imgQtxtA = this.state.quizData.imgQtxtA;
-    }else if(this.state.quizType === 'txtTxt'){
+    } else if (this.state.quizType === 'txtTxt') {
       this.shrtQlngA = this.state.quizData.shrtQlngA;
       this.lngQshrtA = this.state.quizData.lngQshrtA;
     }
@@ -139,7 +144,7 @@ class Quiz extends React.Component {
 
   componentWillUnmount() {
     this.playbackInstance.unloadAsync();
-    this.setState({ countdownRunning: false });
+    this.setState({countdownRunning: false});
   }
 
   /**
@@ -206,15 +211,19 @@ class Quiz extends React.Component {
           nextState.score = state.score + 500 + timeBasedScore;
           nextState.answerCorrect = true;
         } else {
-          let correctionQuestion = state.questions[state.activeQuestionIndex].correctLongType;
-          let correctAnswer = state.questions[state.activeQuestionIndex].correctImg;
+          let correctionQuestion =
+            state.questions[state.activeQuestionIndex].correctLongType;
+          let correctAnswer =
+            state.questions[state.activeQuestionIndex].correctImg;
           let incorrectAnswer = '';
           if (selectedAnswer.incorrectAnswer !== '') {
             incorrectAnswer = selectedAnswer.img;
           }
-          if(state.quizType === 'txtTxt'){
-            correctionQuestion = state.questions[state.activeQuestionIndex].correctShortType;
-            correctAnswer = state.questions[state.activeQuestionIndex].correctLongType;
+          if (state.quizType === 'txtTxt') {
+            correctionQuestion =
+              state.questions[state.activeQuestionIndex].correctShortType;
+            correctAnswer =
+              state.questions[state.activeQuestionIndex].correctLongType;
             if (selectedAnswer.incorrectAnswer !== '') {
               incorrectAnswer = selectedAnswer.longType;
             }
@@ -228,9 +237,11 @@ class Quiz extends React.Component {
             if (selectedAnswer.incorrectAnswer !== '') {
               incorrectAnswer = selectedAnswer.longType;
             }
-            if(state.quizType === 'txtTxt'){
-              correctionQuestion = state.questions[state.activeQuestionIndex].correctLongType;
-              correctAnswer = state.questions[state.activeQuestionIndex].correctShortType;
+            if (state.quizType === 'txtTxt') {
+              correctionQuestion =
+                state.questions[state.activeQuestionIndex].correctLongType;
+              correctAnswer =
+                state.questions[state.activeQuestionIndex].correctShortType;
               if (selectedAnswer.incorrectAnswer !== '') {
                 incorrectAnswer = selectedAnswer.shortType;
               }
@@ -307,7 +318,7 @@ class Quiz extends React.Component {
       this.playbackInstance.setOnPlaybackStatusUpdate(null);
       this.playbackInstance = null;
     }
-    const source = require('../assets/bensound-smallguitar2.mp3');
+    const source = require('../assets/music/bensound-smallguitar.mp3');
     const initialStatus = {
       shouldPlay: true,
       rate: 1.0, // Control the speed
@@ -449,7 +460,7 @@ class Quiz extends React.Component {
   }
 
   renderBody(question) {
-    if(this.state.quizType === 'txtImg'){
+    if (this.state.quizType === 'txtImg') {
       return this.rendertxtImgQuizBody(question);
     }
     return this.rendertxtTxtQuizBody(question);
