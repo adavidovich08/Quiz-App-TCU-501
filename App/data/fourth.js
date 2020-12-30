@@ -5,14 +5,9 @@ const fourth = [
     icon: 'weather-cloudy'
   },
   {
-    name: 'Prueba',
+    name: 'What to Wear?',
     color: '#005da4',
-    icon: 'lead-pencil'
-  },
-  {
-    name: 'Organs',
-    color: '#005da4',
-    icon: 'brain'
+    icon: 'tshirt-crew-outline'
   }
 ];
 

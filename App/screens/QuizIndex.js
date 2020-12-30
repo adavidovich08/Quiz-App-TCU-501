@@ -3,6 +3,7 @@ import {ScrollView, StatusBar, View, StyleSheet} from 'react-native';
 
 import organsQuestions from '../data/organs';
 import weatherQuestions from '../data/weather';
+import wearQuestions from '../data/whatToWear';
 import pruebaQuestions from '../data/prueba';
 import {RowItem} from '../components/RowItem';
 
@@ -35,6 +36,8 @@ class QuizIndex extends React.Component {
       return organsQuestions;
     } else if (name === 'Weather Conditions') {
       return weatherQuestions;
+    } else if (name === 'What to Wear?') {
+      return wearQuestions;
     }
     return pruebaQuestions;
   };
