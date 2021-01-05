@@ -5,52 +5,52 @@
  * Naming conventions left ambiguous so they can be reused in other quizzes
  */
 brain = {
-  img: require('../assets/organs/brain.jpg'),
+  img: require('../../assets/organs/brain.jpg'),
   short: 'Brain',
   long:
     'It is the boss of your body. It controls everything you do, even when you are asleep.'
 };
 
 heart = {
-  img: require('../assets/organs/heart.jpg'),
+  img: require('../../assets/organs/heart.jpg'),
   short: 'Heart',
   long:
     'It sends blood around your body. The blood provides the oxygen and nutrients it needs.'
 };
 
 intestines = {
-  img: require('../assets/organs/intestines.jpg'),
+  img: require('../../assets/organs/intestines.jpg'),
   short: 'Intestines',
   long: 'It finishes the process of digesting food. It absorbs water and salts.'
 };
 
 kidneys = {
-  img: require('../assets/organs/kidneys.jpg'),
+  img: require('../../assets/organs/kidneys.jpg'),
   short: 'Kidneys',
   long: 'It filters waste out of your blood.'
 };
 
 liver = {
-  img: require('../assets/organs/liver.jpg'),
+  img: require('../../assets/organs/liver.jpg'),
   short: 'Liver',
   long:
     'It cleans your blood. It produces an important digestive liquid called bile.'
 };
 
 lungs = {
-  img: require('../assets/organs/lungs.jpg'),
+  img: require('../../assets/organs/lungs.jpg'),
   short: 'Lungs',
   long: 'It allows you to breathe. It helps you to inhale and exhale the air.'
 };
 
 spinal_cord = {
-  img: require('../assets/organs/spinal_cord.jpg'),
+  img: require('../../assets/organs/spinal_cord.jpg'),
   short: 'Spinal Cord',
   long: 'It protects the main nerves of your body.'
 };
 
 stomach = {
-  img: require('../assets/organs/stomach.jpg'),
+  img: require('../../assets/organs/stomach.jpg'),
   short: 'Stomach',
   long:
     'It stores the food you eat. It breaks down the food into a liquid mixture.'

@@ -5,62 +5,62 @@
  * Naming conventions left ambiguous so they can be reused in other quizzes
  */
 boots = {
-  img: require('../assets/whatToWear/boots.jpg'),
+  img: require('../../assets/whatToWear/boots.jpg'),
   long: 'Boots'
 };
 
 gloves = {
-  img: require('../assets/whatToWear/gloves.jpg'),
+  img: require('../../assets/whatToWear/gloves.jpg'),
   long: 'Gloves'
 };
 
 hat = {
-  img: require('../assets/whatToWear/hat.jpg'),
+  img: require('../../assets/whatToWear/hat.jpg'),
   long: 'Hat'
 };
 
 pants = {
-  img: require('../assets/whatToWear/pants.jpg'),
+  img: require('../../assets/whatToWear/pants.jpg'),
   long: 'Pants'
 };
 
 raincoat = {
-  img: require('../assets/whatToWear/raincoat.jpg'),
+  img: require('../../assets/whatToWear/raincoat.jpg'),
   long: 'Raincoat'
 };
 
 sandals = {
-  img: require('../assets/whatToWear/sandals.jpg'),
+  img: require('../../assets/whatToWear/sandals.jpg'),
   long: 'Sandals'
 };
 
 scarf = {
-  img: require('../assets/whatToWear/scarf.jpg'),
+  img: require('../../assets/whatToWear/scarf.jpg'),
   long: 'Scarf'
 };
 
 socks = {
-  img: require('../assets/whatToWear/socks.jpg'),
+  img: require('../../assets/whatToWear/socks.jpg'),
   long: 'Socks'
 };
 
 sunglasses = {
-  img: require('../assets/whatToWear/sunglasses.jpg'),
+  img: require('../../assets/whatToWear/sunglasses.jpg'),
   long: 'Sunglasses'
 };
 
 sweater = {
-  img: require('../assets/whatToWear/sweater.jpg'),
+  img: require('../../assets/whatToWear/sweater.jpg'),
   long: 'Sweater'
 };
 
 t_shirt = {
-  img: require('../assets/whatToWear/t-shirt.jpg'),
+  img: require('../../assets/whatToWear/t-shirt.jpg'),
   long: 'T-shirt'
 };
 
 umbrella = {
-  img: require('../assets/whatToWear/umbrella.jpg'),
+  img: require('../../assets/whatToWear/umbrella.jpg'),
   long: 'Umbrella'
 };
 

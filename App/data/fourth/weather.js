@@ -5,37 +5,37 @@
  * Naming conventions left ambiguous so they can be reused in other quizzes
  */
 cloudy = {
-  img: require('../assets/weather/cloudy.jpg'),
+  img: require('../../assets/weather/cloudy.jpg'),
   long: 'Cloudy'
 };
 
 partly_cloudy = {
-  img: require('../assets/weather/partly-cloudy.jpg'),
+  img: require('../../assets/weather/partly-cloudy.jpg'),
   long: 'Partly-Cloudy'
 };
 
 rainy = {
-  img: require('../assets/weather/rainy.jpg'),
+  img: require('../../assets/weather/rainy.jpg'),
   long: 'Rainy'
 };
 
 snowy = {
-  img: require('../assets/weather/snowy.jpg'),
+  img: require('../../assets/weather/snowy.jpg'),
   long: 'Snowy'
 };
 
 stormy = {
-  img: require('../assets/weather/stormy.jpg'),
+  img: require('../../assets/weather/stormy.jpg'),
   long: 'Stormy'
 };
 
 sunny = {
-  img: require('../assets/weather/sunny.jpg'),
+  img: require('../../assets/weather/sunny.jpg'),
   long: 'Sunny'
 };
 
 windy = {
-  img: require('../assets/weather/windy.jpg'),
+  img: require('../../assets/weather/windy.jpg'),
   long: 'Windy'
 };
 

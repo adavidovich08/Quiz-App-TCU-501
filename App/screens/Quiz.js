@@ -247,12 +247,18 @@ class Quiz extends React.Component {
               }
             }
           }
+          let correctionKey =
+            state.questions[state.activeQuestionIndex].correctShortType;
+          if (correctionKey === '') {
+            correctionKey =
+              state.questions[state.activeQuestionIndex].correctLongType;
+          }
           const correctionItem = {
             type: state.imgOrFnc,
             question: correctionQuestion,
             incorrect: incorrectAnswer,
             correct: correctAnswer,
-            key: state.questions[state.activeQuestionIndex].correctShortType
+            key: correctionKey
           };
           state.corrections.push(correctionItem);
           nextState.answerCorrect = false;

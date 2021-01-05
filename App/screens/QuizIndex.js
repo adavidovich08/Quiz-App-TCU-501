@@ -1,9 +1,15 @@
 import React from 'react';
 import {ScrollView, StatusBar, View, StyleSheet} from 'react-native';
 
-import organsQuestions from '../data/organs';
-import weatherQuestions from '../data/weather';
-import wearQuestions from '../data/whatToWear';
+import organsQuestions from '../data/fifth/organs';
+import weatherQuestions from '../data/fourth/weather';
+import wearQuestions from '../data/fourth/whatToWear';
+import outdoorQuestions from '../data/fourth/outdoor';
+import indoorQuestions from '../data/fourth/indoor';
+import wildlifeQuestions from '../data/fourth/wildlife';
+import cropsQuestions from '../data/fourth/crops';
+import disastersQuestions from '../data/fourth/disasters';
+import vacationQuestions from '../data/fourth/vacation';
 import pruebaQuestions from '../data/prueba';
 import {RowItem} from '../components/RowItem';
 
@@ -38,6 +44,18 @@ class QuizIndex extends React.Component {
       return weatherQuestions;
     } else if (name === 'What to Wear?') {
       return wearQuestions;
+    } else if (name === 'Outdoor Activities') {
+      return outdoorQuestions;
+    } else if (name === 'Indoor Activities') {
+      return indoorQuestions;
+    } else if (name === 'Wildlife at the Park') {
+      return wildlifeQuestions;
+    } else if (name === 'Costa Rican Crops') {
+      return cropsQuestions;
+    } else if (name === 'Natural Disasters') {
+      return disastersQuestions;
+    } else if (name === 'Vacation Activities') {
+      return vacationQuestions;
     }
     return pruebaQuestions;
   };
