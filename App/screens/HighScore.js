@@ -56,9 +56,10 @@ class HighScore extends React.Component {
     fourth.forEach((quiz) => {
       this.getValue(quiz);
     });
-    /* fifth.forEach((quiz) => {
+    fifth.forEach((quiz) => {
       this.getValue(quiz);
     });
+    /*
     sixth.forEach((quiz) => {
       this.getValue(quiz);
     }); */

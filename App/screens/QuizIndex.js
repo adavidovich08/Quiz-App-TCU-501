@@ -1,7 +1,6 @@
 import React from 'react';
 import {ScrollView, StatusBar, View, StyleSheet} from 'react-native';
 
-import organsQuestions from '../data/fifth/organs';
 import weatherQuestions from '../data/fourth/weather';
 import wearQuestions from '../data/fourth/whatToWear';
 import outdoorQuestions from '../data/fourth/outdoor';
@@ -10,6 +9,10 @@ import wildlifeQuestions from '../data/fourth/wildlife';
 import cropsQuestions from '../data/fourth/crops';
 import disastersQuestions from '../data/fourth/disasters';
 import vacationQuestions from '../data/fourth/vacation';
+import organsQuestions from '../data/fifth/organs';
+import holidaysDatesQuestions from '../data/fifth/holidaysDates';
+import holidaysDescQuestions from '../data/fifth/holidaysDesc';
+import celebrationsQuestions from '../data/fifth/celebrations';
 import pruebaQuestions from '../data/prueba';
 import {RowItem} from '../components/RowItem';
 
@@ -56,6 +59,12 @@ class QuizIndex extends React.Component {
       return disastersQuestions;
     } else if (name === 'Vacation Activities') {
       return vacationQuestions;
+    } else if (name === 'CR Holidays (Dates)') {
+      return holidaysDatesQuestions;
+    } else if (name === 'CR Holidays (Description)') {
+      return holidaysDescQuestions;
+    } else if (name === 'International Celebrations') {
+      return celebrationsQuestions;
     }
     return pruebaQuestions;
   };
