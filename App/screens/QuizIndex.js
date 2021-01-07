@@ -13,6 +13,9 @@ import organsQuestions from '../data/fifth/organs';
 import holidaysDatesQuestions from '../data/fifth/holidaysDates';
 import holidaysDescQuestions from '../data/fifth/holidaysDesc';
 import celebrationsQuestions from '../data/fifth/celebrations';
+import electronicsQuestions from '../data/fifth/electronics';
+import vegetablesQuestions from '../data/fifth/vegetables';
+import fruitsQuestions from '../data/fifth/fruits';
 import pruebaQuestions from '../data/prueba';
 import {RowItem} from '../components/RowItem';
 
@@ -65,6 +68,12 @@ class QuizIndex extends React.Component {
       return holidaysDescQuestions;
     } else if (name === 'International Celebrations') {
       return celebrationsQuestions;
+    } else if (name === 'Electronics') {
+      return electronicsQuestions;
+    } else if (name === 'Vegetables') {
+      return vegetablesQuestions;
+    } else if (name === 'Fruits') {
+      return fruitsQuestions;
     }
     return pruebaQuestions;
   };

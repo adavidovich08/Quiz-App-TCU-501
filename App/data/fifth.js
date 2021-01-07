@@ -18,6 +18,21 @@ const fifth = [
     name: 'International Celebrations',
     color: '#5a445f',
     icon: 'halloween'
+  },
+  {
+    name: 'Electronics',
+    color: '#5a445f',
+    icon: 'cellphone'
+  },
+  {
+    name: 'Vegetables',
+    color: '#5a445f',
+    icon: 'carrot'
+  },
+  {
+    name: 'Fruits',
+    color: '#5a445f',
+    icon: 'food-apple'
   }
 ];
 
