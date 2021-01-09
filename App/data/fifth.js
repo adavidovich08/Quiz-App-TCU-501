@@ -33,6 +33,26 @@ const fifth = [
     name: 'Fruits',
     color: '#5a445f',
     icon: 'food-apple'
+  },
+  {
+    name: 'Activities',
+    color: '#5a445f',
+    icon: 'brush'
+  },
+  {
+    name: 'Healthy Lifestyles',
+    color: '#5a445f',
+    icon: 'smoking-off'
+  },
+  {
+    name: 'Hobbies',
+    color: '#5a445f',
+    icon: 'cards-playing-outline'
+  },
+  {
+    name: 'Sports',
+    color: '#5a445f',
+    icon: 'basketball'
   }
 ];
 

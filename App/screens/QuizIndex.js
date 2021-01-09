@@ -16,6 +16,10 @@ import celebrationsQuestions from '../data/fifth/celebrations';
 import electronicsQuestions from '../data/fifth/electronics';
 import vegetablesQuestions from '../data/fifth/vegetables';
 import fruitsQuestions from '../data/fifth/fruits';
+import activitiesQuestions from '../data/fifth/activities';
+import healthyQuestions from '../data/fifth/healthy';
+import hobbiesQuestions from '../data/fifth/hobbies';
+import sportsQuestions from '../data/fifth/sports';
 import pruebaQuestions from '../data/prueba';
 import {RowItem} from '../components/RowItem';
 
@@ -74,6 +78,14 @@ class QuizIndex extends React.Component {
       return vegetablesQuestions;
     } else if (name === 'Fruits') {
       return fruitsQuestions;
+    } else if (name === 'Activities') {
+      return activitiesQuestions;
+    } else if (name === 'Healthy Lifestyles') {
+      return healthyQuestions;
+    } else if (name === 'Hobbies') {
+      return hobbiesQuestions;
+    } else if (name === 'Sports') {
+      return sportsQuestions;
     }
     return pruebaQuestions;
   };
