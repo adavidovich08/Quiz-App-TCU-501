@@ -1,9 +1,5 @@
-/**
- * correctImg: the image corresponding to the correst answer or question
- * correctShortType: usually what goes as txtOverlay of the image but could be the sole answer or question
- * correctLongType: the question or the correct answer
- * Naming conventions left ambiguous so they can be reused in other quizzes
- */
+import {buildArray} from '../arrayBuilder';
+
 biking = {
   img: require('../../assets/outdoor/biking.jpg'),
   long: 'Biking'
@@ -49,300 +45,68 @@ skiing = {
   long: 'Skiing'
 };
 
-const outdoor = [
+const array = [
   {
     quizType: 'txtImg',
     txtQimgA: 'Which picture matches this outdoor activity?',
     imgQtxtA: 'Which outdoor activity matches this picture?'
   },
   {
-    correctImg: biking.img,
-    correctShortType: '',
-    correctLongType: biking.long,
-    answers: [
-      {
-        id: '1',
-        img: biking.img,
-        shortType: '',
-        longType: biking.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: camping.img,
-        shortType: '',
-        longType: camping.long
-      },
-      {
-        id: '3',
-        img: hiking.img,
-        shortType: '',
-        longType: hiking.long
-      },
-      {
-        id: '4',
-        img: skateboarding.img,
-        shortType: '',
-        longType: skateboarding.long
-      }
-    ]
+    correct: biking,
+    option1: camping,
+    option2: hiking,
+    option3: skateboarding
   },
   {
-    correctImg: camping.img,
-    correctShortType: '',
-    correctLongType: camping.long,
-    answers: [
-      {
-        id: '1',
-        img: camping.img,
-        shortType: '',
-        longType: camping.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: fishing.img,
-        shortType: '',
-        longType: fishing.long
-      },
-      {
-        id: '3',
-        img: running.img,
-        shortType: '',
-        longType: running.long
-      },
-      {
-        id: '4',
-        img: sailing.img,
-        shortType: '',
-        longType: sailing.long
-      }
-    ]
+    correct: camping,
+    option1: fishing,
+    option2: running,
+    option3: sailing
   },
   {
-    correctImg: fishing.img,
-    correctShortType: '',
-    correctLongType: fishing.long,
-    answers: [
-      {
-        id: '1',
-        img: fishing.img,
-        shortType: '',
-        longType: fishing.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: sailing.img,
-        shortType: '',
-        longType: sailing.long
-      },
-      {
-        id: '3',
-        img: kayaking.img,
-        shortType: '',
-        longType: kayaking.long
-      },
-      {
-        id: '4',
-        img: skiing.img,
-        shortType: '',
-        longType: skiing.long
-      }
-    ]
+    correct: fishing,
+    option1: sailing,
+    option2: kayaking,
+    option3: skiing
   },
   {
-    correctImg: hiking.img,
-    correctShortType: '',
-    correctLongType: hiking.long,
-    answers: [
-      {
-        id: '1',
-        img: hiking.img,
-        shortType: '',
-        longType: hiking.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: running.img,
-        shortType: '',
-        longType: running.long
-      },
-      {
-        id: '3',
-        img: biking.img,
-        shortType: '',
-        longType: biking.long
-      },
-      {
-        id: '4',
-        img: skateboarding.img,
-        shortType: '',
-        longType: skateboarding.long
-      }
-    ]
+    correct: hiking,
+    option1: running,
+    option2: biking,
+    option3: skateboarding
   },
   {
-    correctImg: kayaking.img,
-    correctShortType: '',
-    correctLongType: kayaking.long,
-    answers: [
-      {
-        id: '1',
-        img: kayaking.img,
-        shortType: '',
-        longType: kayaking.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: fishing.img,
-        shortType: '',
-        longType: fishing.long
-      },
-      {
-        id: '3',
-        img: sailing.img,
-        shortType: '',
-        longType: sailing.long
-      },
-      {
-        id: '4',
-        img: skiing.img,
-        shortType: '',
-        longType: skiing.long
-      }
-    ]
+    correct: kayaking,
+    option1: fishing,
+    option2: sailing,
+    option3: skiing
   },
   {
-    correctImg: running.img,
-    correctShortType: '',
-    correctLongType: running.long,
-    answers: [
-      {
-        id: '1',
-        img: running.img,
-        shortType: '',
-        longType: running.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: camping.img,
-        shortType: '',
-        longType: camping.long
-      },
-      {
-        id: '3',
-        img: skiing.img,
-        shortType: '',
-        longType: skiing.long
-      },
-      {
-        id: '4',
-        img: skateboarding.img,
-        shortType: '',
-        longType: skateboarding.long
-      }
-    ]
+    correct: running,
+    option1: camping,
+    option2: skiing,
+    option3: skateboarding
   },
   {
-    correctImg: sailing.img,
-    correctShortType: '',
-    correctLongType: sailing.long,
-    answers: [
-      {
-        id: '1',
-        img: sailing.img,
-        shortType: '',
-        longType: sailing.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: fishing.img,
-        shortType: '',
-        longType: fishing.long
-      },
-      {
-        id: '3',
-        img: kayaking.img,
-        shortType: '',
-        longType: kayaking.long
-      },
-      {
-        id: '4',
-        img: biking.img,
-        shortType: '',
-        longType: biking.long
-      }
-    ]
+    correct: sailing,
+    option1: fishing,
+    option2: kayaking,
+    option3: biking
   },
   {
-    correctImg: skateboarding.img,
-    correctShortType: '',
-    correctLongType: skateboarding.long,
-    answers: [
-      {
-        id: '1',
-        img: skateboarding.img,
-        shortType: '',
-        longType: skateboarding.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: camping.img,
-        shortType: '',
-        longType: camping.long
-      },
-      {
-        id: '3',
-        img: hiking.img,
-        shortType: '',
-        longType: hiking.long
-      },
-      {
-        id: '4',
-        img: running.img,
-        shortType: '',
-        longType: running.long
-      }
-    ]
+    correct: skateboarding,
+    option1: camping,
+    option2: hiking,
+    option3: running
   },
   {
-    correctImg: skiing.img,
-    correctShortType: '',
-    correctLongType: skiing.long,
-    answers: [
-      {
-        id: '1',
-        img: skiing.img,
-        shortType: '',
-        longType: skiing.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: biking.img,
-        shortType: '',
-        longType: biking.long
-      },
-      {
-        id: '3',
-        img: hiking.img,
-        shortType: '',
-        longType: hiking.long
-      },
-      {
-        id: '4',
-        img: kayaking.img,
-        shortType: '',
-        longType: kayaking.long
-      }
-    ]
+    correct: skiing,
+    option1: biking,
+    option2: hiking,
+    option3: kayaking
   }
 ];
+
+outdoor = buildArray(array);
 
 export default outdoor;

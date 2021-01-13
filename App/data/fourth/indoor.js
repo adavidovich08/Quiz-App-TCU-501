@@ -1,9 +1,5 @@
-/**
- * correctImg: the image corresponding to the correst answer or question
- * correctShortType: usually what goes as txtOverlay of the image but could be the sole answer or question
- * correctLongType: the question or the correct answer
- * Naming conventions left ambiguous so they can be reused in other quizzes
- */
+import {buildArray} from '../arrayBuilder';
+
 board_games = {
   img: require('../../assets/indoor/board-games.jpg'),
   long: 'Playing board games'
@@ -44,268 +40,62 @@ watching_tv = {
   long: 'Watching TV'
 };
 
-const indoor = [
+const array = [
   {
     quizType: 'txtImg',
     txtQimgA: 'Which picture matches this indoor activity?',
     imgQtxtA: 'Which indoor activity matches this picture?'
   },
   {
-    correctImg: board_games.img,
-    correctShortType: '',
-    correctLongType: board_games.long,
-    answers: [
-      {
-        id: '1',
-        img: board_games.img,
-        shortType: '',
-        longType: board_games.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: jigsaw_puzzle.img,
-        shortType: '',
-        longType: jigsaw_puzzle.long
-      },
-      {
-        id: '3',
-        img: reading.img,
-        shortType: '',
-        longType: reading.long
-      },
-      {
-        id: '4',
-        img: watching_tv.img,
-        shortType: '',
-        longType: watching_tv.long
-      }
-    ]
+    correct: board_games,
+    option1: jigsaw_puzzle,
+    option2: reading,
+    option3: watching_tv
   },
   {
-    correctImg: cooking.img,
-    correctShortType: '',
-    correctLongType: cooking.long,
-    answers: [
-      {
-        id: '1',
-        img: cooking.img,
-        shortType: '',
-        longType: cooking.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: painting.img,
-        shortType: '',
-        longType: painting.long
-      },
-      {
-        id: '3',
-        img: singing.img,
-        shortType: '',
-        longType: singing.long
-      },
-      {
-        id: '4',
-        img: dancing.img,
-        shortType: '',
-        longType: dancing.long
-      }
-    ]
+    correct: cooking,
+    option1: painting,
+    option2: singing,
+    option3: dancing
   },
   {
-    correctImg: dancing.img,
-    correctShortType: '',
-    correctLongType: dancing.long,
-    answers: [
-      {
-        id: '1',
-        img: dancing.img,
-        shortType: '',
-        longType: dancing.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: singing.img,
-        shortType: '',
-        longType: singing.long
-      },
-      {
-        id: '3',
-        img: painting.img,
-        shortType: '',
-        longType: painting.long
-      },
-      {
-        id: '4',
-        img: cooking.img,
-        shortType: '',
-        longType: cooking.long
-      }
-    ]
+    correct: dancing,
+    option1: singing,
+    option2: painting,
+    option3: cooking
   },
   {
-    correctImg: jigsaw_puzzle.img,
-    correctShortType: '',
-    correctLongType: jigsaw_puzzle.long,
-    answers: [
-      {
-        id: '1',
-        img: jigsaw_puzzle.img,
-        shortType: '',
-        longType: jigsaw_puzzle.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: board_games.img,
-        shortType: '',
-        longType: board_games.long
-      },
-      {
-        id: '3',
-        img: reading.img,
-        shortType: '',
-        longType: reading.long
-      },
-      {
-        id: '4',
-        img: watching_tv.img,
-        shortType: '',
-        longType: watching_tv.long
-      }
-    ]
+    correct: jigsaw_puzzle,
+    option1: board_games,
+    option2: reading,
+    option3: watching_tv
   },
   {
-    correctImg: painting.img,
-    correctShortType: '',
-    correctLongType: painting.long,
-    answers: [
-      {
-        id: '1',
-        img: painting.img,
-        shortType: '',
-        longType: painting.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: jigsaw_puzzle.img,
-        shortType: '',
-        longType: jigsaw_puzzle.long
-      },
-      {
-        id: '3',
-        img: cooking.img,
-        shortType: '',
-        longType: cooking.long
-      },
-      {
-        id: '4',
-        img: watching_tv.img,
-        shortType: '',
-        longType: watching_tv.long
-      }
-    ]
+    correct: painting,
+    option1: jigsaw_puzzle,
+    option2: cooking,
+    option3: watching_tv
   },
   {
-    correctImg: reading.img,
-    correctShortType: '',
-    correctLongType: reading.long,
-    answers: [
-      {
-        id: '1',
-        img: reading.img,
-        shortType: '',
-        longType: reading.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: board_games.img,
-        shortType: '',
-        longType: board_games.long
-      },
-      {
-        id: '3',
-        img: dancing.img,
-        shortType: '',
-        longType: dancing.long
-      },
-      {
-        id: '4',
-        img: singing.img,
-        shortType: '',
-        longType: singing.long
-      }
-    ]
+    correct: reading,
+    option1: board_games,
+    option2: dancing,
+    option3: singing
   },
   {
-    correctImg: singing.img,
-    correctShortType: '',
-    correctLongType: singing.long,
-    answers: [
-      {
-        id: '1',
-        img: singing.img,
-        shortType: '',
-        longType: singing.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: board_games.img,
-        shortType: '',
-        longType: board_games.long
-      },
-      {
-        id: '3',
-        img: reading.img,
-        shortType: '',
-        longType: reading.long
-      },
-      {
-        id: '4',
-        img: painting.img,
-        shortType: '',
-        longType: painting.long
-      }
-    ]
+    correct: singing,
+    option1: board_games,
+    option2: reading,
+    option3: painting
   },
   {
-    correctImg: watching_tv.img,
-    correctShortType: '',
-    correctLongType: watching_tv.long,
-    answers: [
-      {
-        id: '1',
-        img: watching_tv.img,
-        shortType: '',
-        longType: watching_tv.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: jigsaw_puzzle.img,
-        shortType: '',
-        longType: jigsaw_puzzle.long
-      },
-      {
-        id: '3',
-        img: dancing.img,
-        shortType: '',
-        longType: dancing.long
-      },
-      {
-        id: '4',
-        img: cooking.img,
-        shortType: '',
-        longType: cooking.long
-      }
-    ]
+    correct: watching_tv,
+    option1: jigsaw_puzzle,
+    option2: dancing,
+    option3: cooking
   }
 ];
+
+indoor = buildArray(array);
 
 export default indoor;

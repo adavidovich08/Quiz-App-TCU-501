@@ -1,9 +1,5 @@
-/**
- * correctImg: the image corresponding to the correst answer or question
- * correctShortType: usually what goes as txtOverlay of the image but could be the sole answer or question
- * correctLongType: the question or the correct answer
- * Naming conventions left ambiguous so they can be reused in other quizzes
- */
+import {buildArray} from '../arrayBuilder';
+
 banana = {
   img: require('../../assets/crops/banana.jpg'),
   long: 'Banana'
@@ -26,7 +22,7 @@ coconut = {
 
 corn = {
   img: require('../../assets/crops/corn.jpg'),
-  long: 'corn'
+  long: 'Corn'
 };
 
 mango = {
@@ -64,396 +60,86 @@ tomato = {
   long: 'Tomato'
 };
 
-const crops = [
+const array = [
   {
     quizType: 'txtImg',
     txtQimgA: 'Which picture matches this Costa Rican crop?',
     imgQtxtA: 'Which Costa Rican crop matches this picture?'
   },
   {
-    correctImg: banana.img,
-    correctShortType: '',
-    correctLongType: banana.long,
-    answers: [
-      {
-        id: '1',
-        img: banana.img,
-        shortType: '',
-        longType: banana.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: mango.img,
-        shortType: '',
-        longType: mango.long
-      },
-      {
-        id: '3',
-        img: tomato.img,
-        shortType: '',
-        longType: tomato.long
-      },
-      {
-        id: '4',
-        img: potato.img,
-        shortType: '',
-        longType: potato.long
-      }
-    ]
+    correct: banana,
+    option1: mango,
+    option2: tomato,
+    option3: potato
   },
   {
-    correctImg: beans.img,
-    correctShortType: '',
-    correctLongType: beans.long,
-    answers: [
-      {
-        id: '1',
-        img: beans.img,
-        shortType: '',
-        longType: beans.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: cocoa.img,
-        shortType: '',
-        longType: cocoa.long
-      },
-      {
-        id: '3',
-        img: coconut.img,
-        shortType: '',
-        longType: coconut.long
-      },
-      {
-        id: '4',
-        img: rice.img,
-        shortType: '',
-        longType: rice.long
-      }
-    ]
+    correct: beans,
+    option1: cocoa,
+    option2: coconut,
+    option3: rice
   },
   {
-    correctImg: cocoa.img,
-    correctShortType: '',
-    correctLongType: cocoa.long,
-    answers: [
-      {
-        id: '1',
-        img: cocoa.img,
-        shortType: '',
-        longType: cocoa.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: beans.img,
-        shortType: '',
-        longType: beans.long
-      },
-      {
-        id: '3',
-        img: onion.img,
-        shortType: '',
-        longType: onion.long
-      },
-      {
-        id: '4',
-        img: corn.img,
-        shortType: '',
-        longType: corn.long
-      }
-    ]
+    correct: cocoa,
+    option1: beans,
+    option2: onion,
+    option3: corn
   },
   {
-    correctImg: coconut.img,
-    correctShortType: '',
-    correctLongType: coconut.long,
-    answers: [
-      {
-        id: '1',
-        img: coconut.img,
-        shortType: '',
-        longType: coconut.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: cocoa.img,
-        shortType: '',
-        longType: cocoa.long
-      },
-      {
-        id: '3',
-        img: orange.img,
-        shortType: '',
-        longType: orange.long
-      },
-      {
-        id: '4',
-        img: onion.img,
-        shortType: '',
-        longType: onion.long
-      }
-    ]
+    correct: coconut,
+    option1: cocoa,
+    option2: orange,
+    option3: onion
   },
   {
-    correctImg: corn.img,
-    correctShortType: '',
-    correctLongType: corn.long,
-    answers: [
-      {
-        id: '1',
-        img: corn.img,
-        shortType: '',
-        longType: corn.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: mango.img,
-        shortType: '',
-        longType: mango.long
-      },
-      {
-        id: '3',
-        img: banana.img,
-        shortType: '',
-        longType: banana.long
-      },
-      {
-        id: '4',
-        img: pineapple.img,
-        shortType: '',
-        longType: pineapple.long
-      }
-    ]
+    correct: corn,
+    option1: mango,
+    option2: banana,
+    option3: pineapple
   },
   {
-    correctImg: mango.img,
-    correctShortType: '',
-    correctLongType: mango.long,
-    answers: [
-      {
-        id: '1',
-        img: mango.img,
-        shortType: '',
-        longType: mango.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: corn.img,
-        shortType: '',
-        longType: corn.long
-      },
-      {
-        id: '3',
-        img: rice.img,
-        shortType: '',
-        longType: rice.long
-      },
-      {
-        id: '4',
-        img: orange.img,
-        shortType: '',
-        longType: orange.long
-      }
-    ]
+    correct: mango,
+    option1: corn,
+    option2: rice,
+    option3: orange
   },
   {
-    correctImg: onion.img,
-    correctShortType: '',
-    correctLongType: onion.long,
-    answers: [
-      {
-        id: '1',
-        img: onion.img,
-        shortType: '',
-        longType: onion.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: pineapple.img,
-        shortType: '',
-        longType: pineapple.long
-      },
-      {
-        id: '3',
-        img: tomato.img,
-        shortType: '',
-        longType: tomato.long
-      },
-      {
-        id: '4',
-        img: potato.img,
-        shortType: '',
-        longType: potato.long
-      }
-    ]
+    correct: onion,
+    option1: pineapple,
+    option2: tomato,
+    option3: potato
   },
   {
-    correctImg: orange.img,
-    correctShortType: '',
-    correctLongType: orange.long,
-    answers: [
-      {
-        id: '1',
-        img: orange.img,
-        shortType: '',
-        longType: orange.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: mango.img,
-        shortType: '',
-        longType: mango.long
-      },
-      {
-        id: '3',
-        img: tomato.img,
-        shortType: '',
-        longType: tomato.long
-      },
-      {
-        id: '4',
-        img: potato.img,
-        shortType: '',
-        longType: potato.long
-      }
-    ]
+    correct: orange,
+    option1: mango,
+    option2: tomato,
+    option3: potato
   },
   {
-    correctImg: pineapple.img,
-    correctShortType: '',
-    correctLongType: pineapple.long,
-    answers: [
-      {
-        id: '1',
-        img: pineapple.img,
-        shortType: '',
-        longType: pineapple.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: banana.img,
-        shortType: '',
-        longType: banana.long
-      },
-      {
-        id: '3',
-        img: coconut.img,
-        shortType: '',
-        longType: coconut.long
-      },
-      {
-        id: '4',
-        img: corn.img,
-        shortType: '',
-        longType: corn.long
-      }
-    ]
+    correct: pineapple,
+    option1: banana,
+    option2: coconut,
+    option3: corn
   },
   {
-    correctImg: potato.img,
-    correctShortType: '',
-    correctLongType: potato.long,
-    answers: [
-      {
-        id: '1',
-        img: potato.img,
-        shortType: '',
-        longType: potato.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: rice.img,
-        shortType: '',
-        longType: rice.long
-      },
-      {
-        id: '3',
-        img: beans.img,
-        shortType: '',
-        longType: beans.long
-      },
-      {
-        id: '4',
-        img: onion.img,
-        shortType: '',
-        longType: onion.long
-      }
-    ]
+    correct: potato,
+    option1: rice,
+    option2: beans,
+    option3: onion
   },
   {
-    correctImg: rice.img,
-    correctShortType: '',
-    correctLongType: rice.long,
-    answers: [
-      {
-        id: '1',
-        img: rice.img,
-        shortType: '',
-        longType: rice.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: beans.img,
-        shortType: '',
-        longType: beans.long
-      },
-      {
-        id: '3',
-        img: cocoa.img,
-        shortType: '',
-        longType: cocoa.long
-      },
-      {
-        id: '4',
-        img: pineapple.img,
-        shortType: '',
-        longType: pineapple.long
-      }
-    ]
+    correct: rice,
+    option1: beans,
+    option2: cocoa,
+    option3: pineapple
   },
   {
-    correctImg: tomato.img,
-    correctShortType: '',
-    correctLongType: tomato.long,
-    answers: [
-      {
-        id: '1',
-        img: tomato.img,
-        shortType: '',
-        longType: tomato.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: banana.img,
-        shortType: '',
-        longType: banana.long
-      },
-      {
-        id: '3',
-        img: potato.img,
-        shortType: '',
-        longType: potato.long
-      },
-      {
-        id: '4',
-        img: orange.img,
-        shortType: '',
-        longType: orange.long
-      }
-    ]
+    correct: tomato,
+    option1: banana,
+    option2: potato,
+    option3: orange
   }
 ];
+
+crops = buildArray(array);
 
 export default crops;

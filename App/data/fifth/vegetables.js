@@ -1,9 +1,5 @@
-/**
- * correctImg: the image corresponding to the correst answer or question
- * correctShortType: usually what goes as txtOverlay of the image but could be the sole answer or question
- * correctLongType: the question or the correct answer
- * Naming conventions left ambiguous so they can be reused in other quizzes
- */
+import {buildArray} from '../arrayBuilder';
+
 broccoli = {
   img: require('../../assets/vegetables/broccoli.jpg'),
   long: 'Broccoli'
@@ -59,364 +55,80 @@ spinach = {
   long: 'Spinach'
 };
 
-const vegetables = [
+const array = [
   {
     quizType: 'txtImg',
     txtQimgA: 'Which picture matches this vegetable?',
     imgQtxtA: 'Which vegetable matches this picture?'
   },
   {
-    correctImg: broccoli.img,
-    correctShortType: '',
-    correctLongType: broccoli.long,
-    answers: [
-      {
-        id: '1',
-        img: broccoli.img,
-        shortType: '',
-        longType: broccoli.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: cauliflower.img,
-        shortType: '',
-        longType: cauliflower.long
-      },
-      {
-        id: '3',
-        img: lettuce.img,
-        shortType: '',
-        longType: lettuce.long
-      },
-      {
-        id: '4',
-        img: spinach.img,
-        shortType: '',
-        longType: spinach.long
-      }
-    ]
+    correct: broccoli,
+    option1: cauliflower,
+    option2: lettuce,
+    option3: spinach
   },
   {
-    correctImg: cabbage.img,
-    correctShortType: '',
-    correctLongType: cabbage.long,
-    answers: [
-      {
-        id: '1',
-        img: cabbage.img,
-        shortType: '',
-        longType: cabbage.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: lettuce.img,
-        shortType: '',
-        longType: lettuce.long
-      },
-      {
-        id: '3',
-        img: potato.img,
-        shortType: '',
-        longType: potato.long
-      },
-      {
-        id: '4',
-        img: celery.img,
-        shortType: '',
-        longType: celery.long
-      }
-    ]
+    correct: cabbage,
+    option1: lettuce,
+    option2: potato,
+    option3: celery
   },
   {
-    correctImg: carrot.img,
-    correctShortType: '',
-    correctLongType: carrot.long,
-    answers: [
-      {
-        id: '1',
-        img: carrot.img,
-        shortType: '',
-        longType: carrot.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: cabbage.img,
-        shortType: '',
-        longType: cabbage.long
-      },
-      {
-        id: '3',
-        img: garlic.img,
-        shortType: '',
-        longType: garlic.long
-      },
-      {
-        id: '4',
-        img: ginger.img,
-        shortType: '',
-        longType: ginger.long
-      }
-    ]
+    correct: carrot,
+    option1: cabbage,
+    option2: garlic,
+    option3: ginger
   },
   {
-    correctImg: cauliflower.img,
-    correctShortType: '',
-    correctLongType: cauliflower.long,
-    answers: [
-      {
-        id: '1',
-        img: cauliflower.img,
-        shortType: '',
-        longType: cauliflower.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: broccoli.img,
-        shortType: '',
-        longType: broccoli.long
-      },
-      {
-        id: '3',
-        img: onion.img,
-        shortType: '',
-        longType: onion.long
-      },
-      {
-        id: '4',
-        img: cabbage.img,
-        shortType: '',
-        longType: cabbage.long
-      }
-    ]
+    correct: cauliflower,
+    option1: broccoli,
+    option2: onion,
+    option3: cabbage
   },
   {
-    correctImg: celery.img,
-    correctShortType: '',
-    correctLongType: celery.long,
-    answers: [
-      {
-        id: '1',
-        img: celery.img,
-        shortType: '',
-        longType: celery.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: spinach.img,
-        shortType: '',
-        longType: spinach.long
-      },
-      {
-        id: '3',
-        img: ginger.img,
-        shortType: '',
-        longType: ginger.long
-      },
-      {
-        id: '4',
-        img: carrot.img,
-        shortType: '',
-        longType: carrot.long
-      }
-    ]
+    correct: celery,
+    option1: spinach,
+    option2: ginger,
+    option3: carrot
   },
   {
-    correctImg: garlic.img,
-    correctShortType: '',
-    correctLongType: garlic.long,
-    answers: [
-      {
-        id: '1',
-        img: garlic.img,
-        shortType: '',
-        longType: garlic.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: ginger.img,
-        shortType: '',
-        longType: ginger.long
-      },
-      {
-        id: '3',
-        img: onion.img,
-        shortType: '',
-        longType: onion.long
-      },
-      {
-        id: '4',
-        img: broccoli.img,
-        shortType: '',
-        longType: broccoli.long
-      }
-    ]
+    correct: garlic,
+    option1: ginger,
+    option2: onion,
+    option3: broccoli
   },
   {
-    correctImg: ginger.img,
-    correctShortType: '',
-    correctLongType: ginger.long,
-    answers: [
-      {
-        id: '1',
-        img: ginger.img,
-        shortType: '',
-        longType: ginger.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: garlic.img,
-        shortType: '',
-        longType: garlic.long
-      },
-      {
-        id: '3',
-        img: potato.img,
-        shortType: '',
-        longType: potato.long
-      },
-      {
-        id: '4',
-        img: carrot.img,
-        shortType: '',
-        longType: carrot.long
-      }
-    ]
+    correct: ginger,
+    option1: garlic,
+    option2: potato,
+    option3: carrot
   },
   {
-    correctImg: lettuce.img,
-    correctShortType: '',
-    correctLongType: lettuce.long,
-    answers: [
-      {
-        id: '1',
-        img: lettuce.img,
-        shortType: '',
-        longType: lettuce.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: cabbage.img,
-        shortType: '',
-        longType: cabbage.long
-      },
-      {
-        id: '3',
-        img: celery.img,
-        shortType: '',
-        longType: celery.long
-      },
-      {
-        id: '4',
-        img: spinach.img,
-        shortType: '',
-        longType: spinach.long
-      }
-    ]
+    correct: lettuce,
+    option1: cabbage,
+    option2: celery,
+    option3: spinach
   },
   {
-    correctImg: onion.img,
-    correctShortType: '',
-    correctLongType: onion.long,
-    answers: [
-      {
-        id: '1',
-        img: onion.img,
-        shortType: '',
-        longType: onion.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: cauliflower.img,
-        shortType: '',
-        longType: cauliflower.long
-      },
-      {
-        id: '3',
-        img: potato.img,
-        shortType: '',
-        longType: potato.long
-      },
-      {
-        id: '4',
-        img: garlic.img,
-        shortType: '',
-        longType: garlic.long
-      }
-    ]
+    correct: onion,
+    option1: cauliflower,
+    option2: potato,
+    option3: garlic
   },
   {
-    correctImg: potato.img,
-    correctShortType: '',
-    correctLongType: potato.long,
-    answers: [
-      {
-        id: '1',
-        img: potato.img,
-        shortType: '',
-        longType: potato.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: onion.img,
-        shortType: '',
-        longType: onion.long
-      },
-      {
-        id: '3',
-        img: cauliflower.img,
-        shortType: '',
-        longType: cauliflower.long
-      },
-      {
-        id: '4',
-        img: carrot.img,
-        shortType: '',
-        longType: carrot.long
-      }
-    ]
+    correct: potato,
+    option1: onion,
+    option2: cauliflower,
+    option3: carrot
   },
   {
-    correctImg: spinach.img,
-    correctShortType: '',
-    correctLongType: spinach.long,
-    answers: [
-      {
-        id: '1',
-        img: spinach.img,
-        shortType: '',
-        longType: spinach.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: broccoli.img,
-        shortType: '',
-        longType: broccoli.long
-      },
-      {
-        id: '3',
-        img: celery.img,
-        shortType: '',
-        longType: celery.long
-      },
-      {
-        id: '4',
-        img: lettuce.img,
-        shortType: '',
-        longType: lettuce.long
-      }
-    ]
+    correct: spinach,
+    option1: broccoli,
+    option2: celery,
+    option3: lettuce
   }
 ];
+
+vegetables = buildArray(array);
 
 export default vegetables;

@@ -1,9 +1,5 @@
-/**
- * correctImg: the image corresponding to the correst answer or question
- * correctShortType: usually what goes as txtOverlay of the image but could be the sole answer or question
- * correctLongType: the question or the correct answer
- * Naming conventions left ambiguous so they can be reused in other quizzes
- */
+import {buildArray} from '../arrayBuilder';
+
 amusement_park = {
   img: require('../../assets/vacation/amusement-park.jpg'),
   long: 'Going to the amusement park'
@@ -46,7 +42,7 @@ picnic = {
 
 pool_day = {
   img: require('../../assets/vacation/pool-day.jpg'),
-  long: 'Pool Day'
+  long: 'Having a pool day'
 };
 
 zoo = {
@@ -54,332 +50,74 @@ zoo = {
   long: 'Going to the Zoo'
 };
 
-const vacation = [
+const array = [
   {
     quizType: 'txtImg',
     txtQimgA: 'Which picture matches this vacation activity?',
     imgQtxtA: 'Which vacation activity matches this picture?'
   },
   {
-    correctImg: amusement_park.img,
-    correctShortType: '',
-    correctLongType: amusement_park.long,
-    answers: [
-      {
-        id: '1',
-        img: amusement_park.img,
-        shortType: '',
-        longType: amusement_park.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: picnic.img,
-        shortType: '',
-        longType: picnic.long
-      },
-      {
-        id: '3',
-        img: minigolf.img,
-        shortType: '',
-        longType: minigolf.long
-      },
-      {
-        id: '4',
-        img: zoo.img,
-        shortType: '',
-        longType: zoo.long
-      }
-    ]
+    correct: amusement_park,
+    option1: picnic,
+    option2: minigolf,
+    option3: zoo
   },
   {
-    correctImg: aquarium.img,
-    correctShortType: '',
-    correctLongType: aquarium.long,
-    answers: [
-      {
-        id: '1',
-        img: aquarium.img,
-        shortType: '',
-        longType: aquarium.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: beach.img,
-        shortType: '',
-        longType: beach.long
-      },
-      {
-        id: '3',
-        img: museum.img,
-        shortType: '',
-        longType: museum.long
-      },
-      {
-        id: '4',
-        img: zoo.img,
-        shortType: '',
-        longType: zoo.long
-      }
-    ]
+    correct: aquarium,
+    option1: beach,
+    option2: museum,
+    option3: zoo
   },
   {
-    correctImg: beach.img,
-    correctShortType: '',
-    correctLongType: beach.long,
-    answers: [
-      {
-        id: '1',
-        img: beach.img,
-        shortType: '',
-        longType: beach.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: picnic.img,
-        shortType: '',
-        longType: picnic.long
-      },
-      {
-        id: '3',
-        img: eating_out.img,
-        shortType: '',
-        longType: eating_out.long
-      },
-      {
-        id: '4',
-        img: pool_day.img,
-        shortType: '',
-        longType: pool_day.long
-      }
-    ]
+    correct: beach,
+    option1: picnic,
+    option2: eating_out,
+    option3: pool_day
   },
   {
-    correctImg: eating_out.img,
-    correctShortType: '',
-    correctLongType: eating_out.long,
-    answers: [
-      {
-        id: '1',
-        img: eating_out.img,
-        shortType: '',
-        longType: eating_out.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: horseback_riding.img,
-        shortType: '',
-        longType: horseback_riding.long
-      },
-      {
-        id: '3',
-        img: minigolf.img,
-        shortType: '',
-        longType: minigolf.long
-      },
-      {
-        id: '4',
-        img: museum.img,
-        shortType: '',
-        longType: museum.long
-      }
-    ]
+    correct: eating_out,
+    option1: horseback_riding,
+    option2: minigolf,
+    option3: museum
   },
   {
-    correctImg: horseback_riding.img,
-    correctShortType: '',
-    correctLongType: horseback_riding.long,
-    answers: [
-      {
-        id: '1',
-        img: horseback_riding.img,
-        shortType: '',
-        longType: horseback_riding.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: amusement_park.img,
-        shortType: '',
-        longType: amusement_park.long
-      },
-      {
-        id: '3',
-        img: minigolf.img,
-        shortType: '',
-        longType: minigolf.long
-      },
-      {
-        id: '4',
-        img: pool_day.img,
-        shortType: '',
-        longType: pool_day.long
-      }
-    ]
+    correct: horseback_riding,
+    option1: amusement_park,
+    option2: minigolf,
+    option3: pool_day
   },
   {
-    correctImg: minigolf.img,
-    correctShortType: '',
-    correctLongType: minigolf.long,
-    answers: [
-      {
-        id: '1',
-        img: minigolf.img,
-        shortType: '',
-        longType: minigolf.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: picnic.img,
-        shortType: '',
-        longType: picnic.long
-      },
-      {
-        id: '3',
-        img: beach.img,
-        shortType: '',
-        longType: beach.long
-      },
-      {
-        id: '4',
-        img: aquarium.img,
-        shortType: '',
-        longType: aquarium.long
-      }
-    ]
+    correct: minigolf,
+    option1: picnic,
+    option2: beach,
+    option3: aquarium
   },
   {
-    correctImg: museum.img,
-    correctShortType: '',
-    correctLongType: museum.long,
-    answers: [
-      {
-        id: '1',
-        img: museum.img,
-        shortType: '',
-        longType: museum.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: aquarium.img,
-        shortType: '',
-        longType: aquarium.long
-      },
-      {
-        id: '3',
-        img: eating_out.img,
-        shortType: '',
-        longType: eating_out.long
-      },
-      {
-        id: '4',
-        img: zoo.img,
-        shortType: '',
-        longType: zoo.long
-      }
-    ]
+    correct: museum,
+    option1: aquarium,
+    option2: eating_out,
+    option3: zoo
   },
   {
-    correctImg: picnic.img,
-    correctShortType: '',
-    correctLongType: picnic.long,
-    answers: [
-      {
-        id: '1',
-        img: picnic.img,
-        shortType: '',
-        longType: picnic.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: museum.img,
-        shortType: '',
-        longType: museum.long
-      },
-      {
-        id: '3',
-        img: amusement_park.img,
-        shortType: '',
-        longType: amusement_park.long
-      },
-      {
-        id: '4',
-        img: pool_day.img,
-        shortType: '',
-        longType: pool_day.long
-      }
-    ]
+    correct: picnic,
+    option1: museum,
+    option2: amusement_park,
+    option3: pool_day
   },
   {
-    correctImg: pool_day.img,
-    correctShortType: '',
-    correctLongType: pool_day.long,
-    answers: [
-      {
-        id: '1',
-        img: pool_day.img,
-        shortType: '',
-        longType: pool_day.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: horseback_riding.img,
-        shortType: '',
-        longType: horseback_riding.long
-      },
-      {
-        id: '3',
-        img: aquarium.img,
-        shortType: '',
-        longType: aquarium.long
-      },
-      {
-        id: '4',
-        img: beach.img,
-        shortType: '',
-        longType: beach.long
-      }
-    ]
+    correct: pool_day,
+    option1: horseback_riding,
+    option2: aquarium,
+    option3: beach
   },
   {
-    correctImg: zoo.img,
-    correctShortType: '',
-    correctLongType: zoo.long,
-    answers: [
-      {
-        id: '1',
-        img: zoo.img,
-        shortType: '',
-        longType: zoo.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: amusement_park.img,
-        shortType: '',
-        longType: amusement_park.long
-      },
-      {
-        id: '3',
-        img: eating_out.img,
-        shortType: '',
-        longType: eating_out.long
-      },
-      {
-        id: '4',
-        img: horseback_riding.img,
-        shortType: '',
-        longType: horseback_riding.long
-      }
-    ]
+    correct: zoo,
+    option1: amusement_park,
+    option2: eating_out,
+    option3: horseback_riding
   }
 ];
+
+vacation = buildArray(array);
 
 export default vacation;

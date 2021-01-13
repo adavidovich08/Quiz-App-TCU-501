@@ -1,14 +1,14 @@
 const sixth = [
   {
-    name: 'Organs',
+    name: 'Superheroes',
     color: '#f37021',
-    icon: 'brain'
+    icon: 'flash-circle'
   },
   {
-    name: 'Prueba',
+    name: 'Famous People',
     color: '#f37021',
-    icon: 'lead-pencil'
+    icon: 'glasses'
   }
 ];
-  
+
 export default sixth;

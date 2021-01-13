@@ -1,9 +1,5 @@
-/**
- * correctImg: the image corresponding to the correst answer or question
- * correctShortType: usually what goes as txtOverlay of the image but could be the sole answer or question
- * correctLongType: the question or the correct answer
- * Naming conventions left ambiguous so they can be reused in other quizzes
- */
+import {buildArray} from '../arrayBuilder';
+
 browsing_internet = {
   img: require('../../assets/hobbies/browsing-internet.jpg'),
   long: 'Browsing the internet'
@@ -74,460 +70,98 @@ watching_tv = {
   long: 'Watching TV'
 };
 
-const hobbies = [
+const array = [
   {
     quizType: 'txtImg',
     txtQimgA: 'Which picture matches this hobby?',
     imgQtxtA: 'Which hobby matches this picture?'
   },
   {
-    correctImg: browsing_internet.img,
-    correctShortType: '',
-    correctLongType: browsing_internet.long,
-    answers: [
-      {
-        id: '1',
-        img: browsing_internet.img,
-        shortType: '',
-        longType: browsing_internet.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: reading.img,
-        shortType: '',
-        longType: reading.long
-      },
-      {
-        id: '3',
-        img: watching_tv.img,
-        shortType: '',
-        longType: watching_tv.long
-      },
-      {
-        id: '4',
-        img: listening_music.img,
-        shortType: '',
-        longType: listening_music.long
-      }
-    ]
+    correct: browsing_internet,
+    option1: reading,
+    option2: watching_tv,
+    option3: listening_music
   },
   {
-    correctImg: cooking.img,
-    correctShortType: '',
-    correctLongType: cooking.long,
-    answers: [
-      {
-        id: '1',
-        img: cooking.img,
-        shortType: '',
-        longType: cooking.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: gardening.img,
-        shortType: '',
-        longType: gardening.long
-      },
-      {
-        id: '3',
-        img: play_instrument.img,
-        shortType: '',
-        longType: play_instrument.long
-      },
-      {
-        id: '4',
-        img: painting.img,
-        shortType: '',
-        longType: painting.long
-      }
-    ]
+    correct: cooking,
+    option1: gardening,
+    option2: play_instrument,
+    option3: painting
   },
   {
-    correctImg: dancing.img,
-    correctShortType: '',
-    correctLongType: dancing.long,
-    answers: [
-      {
-        id: '1',
-        img: dancing.img,
-        shortType: '',
-        longType: dancing.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: cooking.img,
-        shortType: '',
-        longType: cooking.long
-      },
-      {
-        id: '3',
-        img: knitting.img,
-        shortType: '',
-        longType: knitting.long
-      },
-      {
-        id: '4',
-        img: reading.img,
-        shortType: '',
-        longType: reading.long
-      }
-    ]
+    correct: dancing,
+    option1: cooking,
+    option2: knitting,
+    option3: reading
   },
   {
-    correctImg: gardening.img,
-    correctShortType: '',
-    correctLongType: gardening.long,
-    answers: [
-      {
-        id: '1',
-        img: gardening.img,
-        shortType: '',
-        longType: gardening.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: knitting.img,
-        shortType: '',
-        longType: knitting.long
-      },
-      {
-        id: '3',
-        img: play_instrument.img,
-        shortType: '',
-        longType: play_instrument.long
-      },
-      {
-        id: '4',
-        img: watching_tv.img,
-        shortType: '',
-        longType: watching_tv.long
-      }
-    ]
+    correct: gardening,
+    option1: knitting,
+    option2: play_instrument,
+    option3: watching_tv
   },
   {
-    correctImg: knitting.img,
-    correctShortType: '',
-    correctLongType: knitting.long,
-    answers: [
-      {
-        id: '1',
-        img: knitting.img,
-        shortType: '',
-        longType: knitting.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: playing_pool.img,
-        shortType: '',
-        longType: playing_pool.long
-      },
-      {
-        id: '3',
-        img: listening_music.img,
-        shortType: '',
-        longType: listening_music.long
-      },
-      {
-        id: '4',
-        img: dancing.img,
-        shortType: '',
-        longType: dancing.long
-      }
-    ]
+    correct: knitting,
+    option1: playing_pool,
+    option2: listening_music,
+    option3: dancing
   },
   {
-    correctImg: listening_music.img,
-    correctShortType: '',
-    correctLongType: listening_music.long,
-    answers: [
-      {
-        id: '1',
-        img: listening_music.img,
-        shortType: '',
-        longType: listening_music.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: browsing_internet.img,
-        shortType: '',
-        longType: browsing_internet.long
-      },
-      {
-        id: '3',
-        img: playing_chess.img,
-        shortType: '',
-        longType: playing_chess.long
-      },
-      {
-        id: '4',
-        img: painting.img,
-        shortType: '',
-        longType: painting.long
-      }
-    ]
+    correct: listening_music,
+    option1: browsing_internet,
+    option2: playing_chess,
+    option3: painting
   },
   {
-    correctImg: painting.img,
-    correctShortType: '',
-    correctLongType: painting.long,
-    answers: [
-      {
-        id: '1',
-        img: painting.img,
-        shortType: '',
-        longType: painting.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: reading.img,
-        shortType: '',
-        longType: reading.long
-      },
-      {
-        id: '3',
-        img: playing_cards.img,
-        shortType: '',
-        longType: playing_cards.long
-      },
-      {
-        id: '4',
-        img: gardening.img,
-        shortType: '',
-        longType: gardening.long
-      }
-    ]
+    correct: painting,
+    option1: reading,
+    option2: playing_cards,
+    option3: gardening
   },
   {
-    correctImg: play_instrument.img,
-    correctShortType: '',
-    correctLongType: play_instrument.long,
-    answers: [
-      {
-        id: '1',
-        img: play_instrument.img,
-        shortType: '',
-        longType: play_instrument.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: browsing_internet.img,
-        shortType: '',
-        longType: browsing_internet.long
-      },
-      {
-        id: '3',
-        img: play_videogames.img,
-        shortType: '',
-        longType: play_videogames.long
-      },
-      {
-        id: '4',
-        img: dancing.img,
-        shortType: '',
-        longType: dancing.long
-      }
-    ]
+    correct: play_instrument,
+    option1: browsing_internet,
+    option2: play_videogames,
+    option3: dancing
   },
   {
-    correctImg: play_videogames.img,
-    correctShortType: '',
-    correctLongType: play_videogames.long,
-    answers: [
-      {
-        id: '1',
-        img: play_videogames.img,
-        shortType: '',
-        longType: play_videogames.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: play_instrument.img,
-        shortType: '',
-        longType: play_instrument.long
-      },
-      {
-        id: '3',
-        img: playing_cards.img,
-        shortType: '',
-        longType: playing_cards.long
-      },
-      {
-        id: '4',
-        img: playing_pool.img,
-        shortType: '',
-        longType: playing_pool.long
-      }
-    ]
+    correct: play_videogames,
+    option1: play_instrument,
+    option2: playing_cards,
+    option3: playing_pool
   },
   {
-    correctImg: playing_cards.img,
-    correctShortType: '',
-    correctLongType: playing_cards.long,
-    answers: [
-      {
-        id: '1',
-        img: playing_cards.img,
-        shortType: '',
-        longType: playing_cards.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: playing_chess.img,
-        shortType: '',
-        longType: playing_chess.long
-      },
-      {
-        id: '3',
-        img: playing_pool.img,
-        shortType: '',
-        longType: playing_pool.long
-      },
-      {
-        id: '4',
-        img: knitting.img,
-        shortType: '',
-        longType: knitting.long
-      }
-    ]
+    correct: playing_cards,
+    option1: playing_chess,
+    option2: playing_pool,
+    option3: knitting
   },
   {
-    correctImg: playing_chess.img,
-    correctShortType: '',
-    correctLongType: playing_chess.long,
-    answers: [
-      {
-        id: '1',
-        img: playing_chess.img,
-        shortType: '',
-        longType: playing_chess.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: play_videogames.img,
-        shortType: '',
-        longType: play_videogames.long
-      },
-      {
-        id: '3',
-        img: playing_cards.img,
-        shortType: '',
-        longType: playing_cards.long
-      },
-      {
-        id: '4',
-        img: gardening.img,
-        shortType: '',
-        longType: gardening.long
-      }
-    ]
+    correct: playing_chess,
+    option1: play_videogames,
+    option2: playing_cards,
+    option3: gardening
   },
   {
-    correctImg: playing_pool.img,
-    correctShortType: '',
-    correctLongType: playing_pool.long,
-    answers: [
-      {
-        id: '1',
-        img: playing_pool.img,
-        shortType: '',
-        longType: playing_pool.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: play_videogames.img,
-        shortType: '',
-        longType: play_videogames.long
-      },
-      {
-        id: '3',
-        img: playing_chess.img,
-        shortType: '',
-        longType: playing_chess.long
-      },
-      {
-        id: '4',
-        img: painting.img,
-        shortType: '',
-        longType: painting.long
-      }
-    ]
+    correct: playing_pool,
+    option1: play_videogames,
+    option2: playing_chess,
+    option3: painting
   },
   {
-    correctImg: reading.img,
-    correctShortType: '',
-    correctLongType: reading.long,
-    answers: [
-      {
-        id: '1',
-        img: reading.img,
-        shortType: '',
-        longType: reading.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: watching_tv.img,
-        shortType: '',
-        longType: watching_tv.long
-      },
-      {
-        id: '3',
-        img: cooking.img,
-        shortType: '',
-        longType: cooking.long
-      },
-      {
-        id: '4',
-        img: browsing_internet.img,
-        shortType: '',
-        longType: browsing_internet.long
-      }
-    ]
+    correct: reading,
+    option1: watching_tv,
+    option2: cooking,
+    option3: browsing_internet
   },
   {
-    correctImg: watching_tv.img,
-    correctShortType: '',
-    correctLongType: watching_tv.long,
-    answers: [
-      {
-        id: '1',
-        img: watching_tv.img,
-        shortType: '',
-        longType: watching_tv.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: cooking.img,
-        shortType: '',
-        longType: cooking.long
-      },
-      {
-        id: '3',
-        img: dancing.img,
-        shortType: '',
-        longType: dancing.long
-      },
-      {
-        id: '4',
-        img: listening_music.img,
-        shortType: '',
-        longType: listening_music.long
-      }
-    ]
+    correct: watching_tv,
+    option1: cooking,
+    option2: dancing,
+    option3: listening_music
   }
 ];
+
+hobbies = buildArray(array);
 
 export default hobbies;

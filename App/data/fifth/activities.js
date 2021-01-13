@@ -1,9 +1,5 @@
-/**
- * correctImg: the image corresponding to the correst answer or question
- * correctShortType: usually what goes as txtOverlay of the image but could be the sole answer or question
- * correctLongType: the question or the correct answer
- * Naming conventions left ambiguous so they can be reused in other quizzes
- */
+import {buildArray} from '../arrayBuilder';
+
 board_games = {
   img: require('../../assets/activities/board-games.jpg'),
   long: 'Playing board games'
@@ -59,364 +55,80 @@ watching_tv = {
   long: 'Watching TV'
 };
 
-const activities = [
+const array = [
   {
     quizType: 'txtImg',
     txtQimgA: 'Which picture matches this activity?',
     imgQtxtA: 'Which activity matches this picture?'
   },
   {
-    correctImg: board_games.img,
-    correctShortType: '',
-    correctLongType: board_games.long,
-    answers: [
-      {
-        id: '1',
-        img: board_games.img,
-        shortType: '',
-        longType: board_games.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: cooking.img,
-        shortType: '',
-        longType: cooking.long
-      },
-      {
-        id: '3',
-        img: painting.img,
-        shortType: '',
-        longType: painting.long
-      },
-      {
-        id: '4',
-        img: watching_tv.img,
-        shortType: '',
-        longType: watching_tv.long
-      }
-    ]
+    correct: board_games,
+    option1: cooking,
+    option2: painting,
+    option3: watching_tv
   },
   {
-    correctImg: cooking.img,
-    correctShortType: '',
-    correctLongType: cooking.long,
-    answers: [
-      {
-        id: '1',
-        img: cooking.img,
-        shortType: '',
-        longType: cooking.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: reading.img,
-        shortType: '',
-        longType: reading.long
-      },
-      {
-        id: '3',
-        img: swimming.img,
-        shortType: '',
-        longType: swimming.long
-      },
-      {
-        id: '4',
-        img: watching_tv.img,
-        shortType: '',
-        longType: watching_tv.long
-      }
-    ]
+    correct: cooking,
+    option1: reading,
+    option2: swimming,
+    option3: watching_tv
   },
   {
-    correctImg: dancing.img,
-    correctShortType: '',
-    correctLongType: dancing.long,
-    answers: [
-      {
-        id: '1',
-        img: dancing.img,
-        shortType: '',
-        longType: dancing.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: eating_healthy.img,
-        shortType: '',
-        longType: eating_healthy.long
-      },
-      {
-        id: '3',
-        img: running_park.img,
-        shortType: '',
-        longType: running_park.long
-      },
-      {
-        id: '4',
-        img: soccer.img,
-        shortType: '',
-        longType: soccer.long
-      }
-    ]
+    correct: dancing,
+    option1: eating_healthy,
+    option2: running_park,
+    option3: soccer
   },
   {
-    correctImg: eating_healthy.img,
-    correctShortType: '',
-    correctLongType: eating_healthy.long,
-    answers: [
-      {
-        id: '1',
-        img: eating_healthy.img,
-        shortType: '',
-        longType: eating_healthy.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: gym.img,
-        shortType: '',
-        longType: gym.long
-      },
-      {
-        id: '3',
-        img: board_games.img,
-        shortType: '',
-        longType: board_games.long
-      },
-      {
-        id: '4',
-        img: running_park.img,
-        shortType: '',
-        longType: running_park.long
-      }
-    ]
+    correct: eating_healthy,
+    option1: gym,
+    option2: board_games,
+    option3: running_park
   },
   {
-    correctImg: gym.img,
-    correctShortType: '',
-    correctLongType: gym.long,
-    answers: [
-      {
-        id: '1',
-        img: gym.img,
-        shortType: '',
-        longType: gym.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: dancing.img,
-        shortType: '',
-        longType: dancing.long
-      },
-      {
-        id: '3',
-        img: painting.img,
-        shortType: '',
-        longType: painting.long
-      },
-      {
-        id: '4',
-        img: swimming.img,
-        shortType: '',
-        longType: swimming.long
-      }
-    ]
+    correct: gym,
+    option1: dancing,
+    option2: painting,
+    option3: swimming
   },
   {
-    correctImg: painting.img,
-    correctShortType: '',
-    correctLongType: painting.long,
-    answers: [
-      {
-        id: '1',
-        img: painting.img,
-        shortType: '',
-        longType: painting.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: reading.img,
-        shortType: '',
-        longType: reading.long
-      },
-      {
-        id: '3',
-        img: soccer.img,
-        shortType: '',
-        longType: soccer.long
-      },
-      {
-        id: '4',
-        img: cooking.img,
-        shortType: '',
-        longType: cooking.long
-      }
-    ]
+    correct: painting,
+    option1: reading,
+    option2: soccer,
+    option3: cooking
   },
   {
-    correctImg: reading.img,
-    correctShortType: '',
-    correctLongType: reading.long,
-    answers: [
-      {
-        id: '1',
-        img: reading.img,
-        shortType: '',
-        longType: reading.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: eating_healthy.img,
-        shortType: '',
-        longType: eating_healthy.long
-      },
-      {
-        id: '3',
-        img: watching_tv.img,
-        shortType: '',
-        longType: watching_tv.long
-      },
-      {
-        id: '4',
-        img: dancing.img,
-        shortType: '',
-        longType: dancing.long
-      }
-    ]
+    correct: reading,
+    option1: eating_healthy,
+    option2: watching_tv,
+    option3: dancing
   },
   {
-    correctImg: running_park.img,
-    correctShortType: '',
-    correctLongType: running_park.long,
-    answers: [
-      {
-        id: '1',
-        img: running_park.img,
-        shortType: '',
-        longType: running_park.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: board_games.img,
-        shortType: '',
-        longType: board_games.long
-      },
-      {
-        id: '3',
-        img: gym.img,
-        shortType: '',
-        longType: gym.long
-      },
-      {
-        id: '4',
-        img: swimming.img,
-        shortType: '',
-        longType: swimming.long
-      }
-    ]
+    correct: running_park,
+    option1: board_games,
+    option2: gym,
+    option3: swimming
   },
   {
-    correctImg: soccer.img,
-    correctShortType: '',
-    correctLongType: soccer.long,
-    answers: [
-      {
-        id: '1',
-        img: soccer.img,
-        shortType: '',
-        longType: soccer.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: running_park.img,
-        shortType: '',
-        longType: running_park.long
-      },
-      {
-        id: '3',
-        img: cooking.img,
-        shortType: '',
-        longType: cooking.long
-      },
-      {
-        id: '4',
-        img: gym.img,
-        shortType: '',
-        longType: gym.long
-      }
-    ]
+    correct: soccer,
+    option1: running_park,
+    option2: cooking,
+    option3: gym
   },
   {
-    correctImg: swimming.img,
-    correctShortType: '',
-    correctLongType: swimming.long,
-    answers: [
-      {
-        id: '1',
-        img: swimming.img,
-        shortType: '',
-        longType: swimming.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: soccer.img,
-        shortType: '',
-        longType: soccer.long
-      },
-      {
-        id: '3',
-        img: dancing.img,
-        shortType: '',
-        longType: dancing.long
-      },
-      {
-        id: '4',
-        img: painting.img,
-        shortType: '',
-        longType: painting.long
-      }
-    ]
+    correct: swimming,
+    option1: soccer,
+    option2: dancing,
+    option3: painting
   },
   {
-    correctImg: watching_tv.img,
-    correctShortType: '',
-    correctLongType: watching_tv.long,
-    answers: [
-      {
-        id: '1',
-        img: watching_tv.img,
-        shortType: '',
-        longType: watching_tv.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: board_games.img,
-        shortType: '',
-        longType: board_games.long
-      },
-      {
-        id: '3',
-        img: eating_healthy.img,
-        shortType: '',
-        longType: eating_healthy.long
-      },
-      {
-        id: '4',
-        img: reading.img,
-        shortType: '',
-        longType: reading.long
-      }
-    ]
+    correct: watching_tv,
+    option1: board_games,
+    option2: eating_healthy,
+    option3: reading
   }
 ];
+
+activities = buildArray(array);
 
 export default activities;

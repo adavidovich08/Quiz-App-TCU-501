@@ -1,9 +1,5 @@
-/**
- * correctImg: the image corresponding to the correst answer or question
- * correctShortType: usually what goes as txtOverlay of the image but could be the sole answer or question
- * correctLongType: the question or the correct answer
- * Naming conventions left ambiguous so they can be reused in other quizzes
- */
+import {buildArray} from '../arrayBuilder';
+
 cloudy = {
   img: require('../../assets/weather/cloudy.jpg'),
   long: 'Cloudy'
@@ -39,236 +35,56 @@ windy = {
   long: 'Windy'
 };
 
-const weather = [
+const array = [
   {
     quizType: 'txtImg',
     txtQimgA: 'Which picture matches this weather condition?',
     imgQtxtA: 'Which weather condition matches this picture?'
   },
   {
-    correctImg: rainy.img,
-    correctShortType: '',
-    correctLongType: rainy.long,
-    answers: [
-      {
-        id: '1',
-        img: rainy.img,
-        shortType: '',
-        longType: rainy.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: cloudy.img,
-        shortType: '',
-        longType: cloudy.long
-      },
-      {
-        id: '3',
-        img: sunny.img,
-        shortType: '',
-        longType: sunny.long
-      },
-      {
-        id: '4',
-        img: windy.img,
-        shortType: '',
-        longType: windy.long
-      }
-    ]
+    correct: rainy,
+    option1: cloudy,
+    option2: sunny,
+    option3: windy
   },
   {
-    correctImg: snowy.img,
-    correctShortType: '',
-    correctLongType: snowy.long,
-    answers: [
-      {
-        id: '1',
-        img: snowy.img,
-        shortType: '',
-        longType: snowy.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: cloudy.img,
-        shortType: '',
-        longType: cloudy.long
-      },
-      {
-        id: '3',
-        img: sunny.img,
-        shortType: '',
-        longType: sunny.long
-      },
-      {
-        id: '4',
-        img: windy.img,
-        shortType: '',
-        longType: windy.long
-      }
-    ]
+    correct: snowy,
+    option1: cloudy,
+    option2: sunny,
+    option3: windy
   },
   {
-    correctImg: cloudy.img,
-    correctShortType: '',
-    correctLongType: cloudy.long,
-    answers: [
-      {
-        id: '1',
-        img: cloudy.img,
-        shortType: '',
-        longType: cloudy.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: partly_cloudy.img,
-        shortType: '',
-        longType: partly_cloudy.long
-      },
-      {
-        id: '3',
-        img: sunny.img,
-        shortType: '',
-        longType: sunny.long
-      },
-      {
-        id: '4',
-        img: stormy.img,
-        shortType: '',
-        longType: stormy.long
-      }
-    ]
+    correct: cloudy,
+    option1: partly_cloudy,
+    option2: sunny,
+    option3: stormy
   },
   {
-    correctImg: partly_cloudy.img,
-    correctShortType: '',
-    correctLongType: partly_cloudy.long,
-    answers: [
-      {
-        id: '1',
-        img: partly_cloudy.img,
-        shortType: '',
-        longType: partly_cloudy.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: cloudy.img,
-        shortType: '',
-        longType: cloudy.long
-      },
-      {
-        id: '3',
-        img: snowy.img,
-        shortType: '',
-        longType: snowy.long
-      },
-      {
-        id: '4',
-        img: stormy.img,
-        shortType: '',
-        longType: stormy.long
-      }
-    ]
+    correct: partly_cloudy,
+    option1: cloudy,
+    option2: snowy,
+    option3: stormy
   },
   {
-    correctImg: stormy.img,
-    correctShortType: '',
-    correctLongType: stormy.long,
-    answers: [
-      {
-        id: '1',
-        img: stormy.img,
-        shortType: '',
-        longType: stormy.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: sunny.img,
-        shortType: '',
-        longType: sunny.long
-      },
-      {
-        id: '3',
-        img: rainy.img,
-        shortType: '',
-        longType: rainy.long
-      },
-      {
-        id: '4',
-        img: partly_cloudy.img,
-        shortType: '',
-        longType: partly_cloudy.long
-      }
-    ]
+    correct: stormy,
+    option1: sunny,
+    option2: rainy,
+    option3: partly_cloudy
   },
   {
-    correctImg: sunny.img,
-    correctShortType: '',
-    correctLongType: sunny.long,
-    answers: [
-      {
-        id: '1',
-        img: sunny.img,
-        shortType: '',
-        longType: sunny.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: stormy.img,
-        shortType: '',
-        longType: stormy.long
-      },
-      {
-        id: '3',
-        img: rainy.img,
-        shortType: '',
-        longType: rainy.long
-      },
-      {
-        id: '4',
-        img: cloudy.img,
-        shortType: '',
-        longType: cloudy.long
-      }
-    ]
+    correct: sunny,
+    option1: stormy,
+    option2: rainy,
+    option3: cloudy
   },
   {
-    correctImg: windy.img,
-    correctShortType: '',
-    correctLongType: windy.long,
-    answers: [
-      {
-        id: '1',
-        img: windy.img,
-        shortType: '',
-        longType: windy.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: sunny.img,
-        shortType: '',
-        longType: sunny.long
-      },
-      {
-        id: '3',
-        img: snowy.img,
-        shortType: '',
-        longType: snowy.long
-      },
-      {
-        id: '4',
-        img: partly_cloudy.img,
-        shortType: '',
-        longType: partly_cloudy.long
-      }
-    ]
+    correct: windy,
+    option1: sunny,
+    option2: snowy,
+    option3: partly_cloudy
   }
 ];
+
+weather = buildArray(array);
 
 export default weather;

@@ -1,9 +1,5 @@
-/**
- * correctImg: the image corresponding to the correst answer or question
- * correctShortType: usually what goes as txtOverlay of the image but could be the sole answer or question
- * correctLongType: the question or the correct answer
- * Naming conventions left ambiguous so they can be reused in other quizzes
- */
+import {buildArray} from '../arrayBuilder';
+
 brush_teeth = {
   img: require('../../assets/healthy/brush-teeth.jpg'),
   long: 'Brushing your teeth'
@@ -26,7 +22,7 @@ eating_healthy = {
 
 exercise = {
   img: require('../../assets/healthy/exercise.jpg'),
-  long: 'Doing exercise'
+  long: 'Exercising regularly'
 };
 
 learn_instrument = {
@@ -49,300 +45,68 @@ washing_hands = {
   long: 'Washing your hands'
 };
 
-const healthy = [
+const array = [
   {
     quizType: 'txtImg',
     txtQimgA: 'Which picture matches this healthy activity?',
     imgQtxtA: 'Which healthy activity matches this picture?'
   },
   {
-    correctImg: brush_teeth.img,
-    correctShortType: '',
-    correctLongType: brush_teeth.long,
-    answers: [
-      {
-        id: '1',
-        img: brush_teeth.img,
-        shortType: '',
-        longType: brush_teeth.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: dental_floss.img,
-        shortType: '',
-        longType: dental_floss.long
-      },
-      {
-        id: '3',
-        img: eating_healthy.img,
-        shortType: '',
-        longType: eating_healthy.long
-      },
-      {
-        id: '4',
-        img: taking_shower.img,
-        shortType: '',
-        longType: taking_shower.long
-      }
-    ]
+    correct: brush_teeth,
+    option1: dental_floss,
+    option2: eating_healthy,
+    option3: taking_shower
   },
   {
-    correctImg: dental_floss.img,
-    correctShortType: '',
-    correctLongType: dental_floss.long,
-    answers: [
-      {
-        id: '1',
-        img: dental_floss.img,
-        shortType: '',
-        longType: dental_floss.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: brush_teeth.img,
-        shortType: '',
-        longType: brush_teeth.long
-      },
-      {
-        id: '3',
-        img: drink_water.img,
-        shortType: '',
-        longType: drink_water.long
-      },
-      {
-        id: '4',
-        img: washing_hands.img,
-        shortType: '',
-        longType: washing_hands.long
-      }
-    ]
+    correct: dental_floss,
+    option1: brush_teeth,
+    option2: drink_water,
+    option3: washing_hands
   },
   {
-    correctImg: drink_water.img,
-    correctShortType: '',
-    correctLongType: drink_water.long,
-    answers: [
-      {
-        id: '1',
-        img: drink_water.img,
-        shortType: '',
-        longType: drink_water.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: taking_shower.img,
-        shortType: '',
-        longType: taking_shower.long
-      },
-      {
-        id: '3',
-        img: exercise.img,
-        shortType: '',
-        longType: exercise.long
-      },
-      {
-        id: '4',
-        img: learn_instrument.img,
-        shortType: '',
-        longType: learn_instrument.long
-      }
-    ]
+    correct: drink_water,
+    option1: taking_shower,
+    option2: learn_instrument,
+    option3: exercise
   },
   {
-    correctImg: eating_healthy.img,
-    correctShortType: '',
-    correctLongType: eating_healthy.long,
-    answers: [
-      {
-        id: '1',
-        img: eating_healthy.img,
-        shortType: '',
-        longType: eating_healthy.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: exercise.img,
-        shortType: '',
-        longType: exercise.long
-      },
-      {
-        id: '3',
-        img: not_smoking.img,
-        shortType: '',
-        longType: not_smoking.long
-      },
-      {
-        id: '4',
-        img: learn_instrument.img,
-        shortType: '',
-        longType: learn_instrument.long
-      }
-    ]
+    correct: eating_healthy,
+    option1: exercise,
+    option2: not_smoking,
+    option3: learn_instrument
   },
   {
-    correctImg: exercise.img,
-    correctShortType: '',
-    correctLongType: exercise.long,
-    answers: [
-      {
-        id: '1',
-        img: exercise.img,
-        shortType: '',
-        longType: exercise.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: eating_healthy.img,
-        shortType: '',
-        longType: eating_healthy.long
-      },
-      {
-        id: '3',
-        img: not_smoking.img,
-        shortType: '',
-        longType: not_smoking.long
-      },
-      {
-        id: '4',
-        img: dental_floss.img,
-        shortType: '',
-        longType: dental_floss.long
-      }
-    ]
+    correct: exercise,
+    option1: eating_healthy,
+    option2: not_smoking,
+    option3: dental_floss
   },
   {
-    correctImg: learn_instrument.img,
-    correctShortType: '',
-    correctLongType: learn_instrument.long,
-    answers: [
-      {
-        id: '1',
-        img: learn_instrument.img,
-        shortType: '',
-        longType: learn_instrument.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: brush_teeth.img,
-        shortType: '',
-        longType: brush_teeth.long
-      },
-      {
-        id: '3',
-        img: exercise.img,
-        shortType: '',
-        longType: exercise.long
-      },
-      {
-        id: '4',
-        img: washing_hands.img,
-        shortType: '',
-        longType: washing_hands.long
-      }
-    ]
+    correct: learn_instrument,
+    option1: brush_teeth,
+    option2: exercise,
+    option3: washing_hands
   },
   {
-    correctImg: not_smoking.img,
-    correctShortType: '',
-    correctLongType: not_smoking.long,
-    answers: [
-      {
-        id: '1',
-        img: not_smoking.img,
-        shortType: '',
-        longType: not_smoking.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: learn_instrument.img,
-        shortType: '',
-        longType: learn_instrument.long
-      },
-      {
-        id: '3',
-        img: eating_healthy.img,
-        shortType: '',
-        longType: eating_healthy.long
-      },
-      {
-        id: '4',
-        img: dental_floss.img,
-        shortType: '',
-        longType: dental_floss.long
-      }
-    ]
+    correct: not_smoking,
+    option1: learn_instrument,
+    option2: eating_healthy,
+    option3: dental_floss
   },
   {
-    correctImg: taking_shower.img,
-    correctShortType: '',
-    correctLongType: taking_shower.long,
-    answers: [
-      {
-        id: '1',
-        img: taking_shower.img,
-        shortType: '',
-        longType: taking_shower.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: washing_hands.img,
-        shortType: '',
-        longType: washing_hands.long
-      },
-      {
-        id: '3',
-        img: drink_water.img,
-        shortType: '',
-        longType: drink_water.long
-      },
-      {
-        id: '4',
-        img: brush_teeth.img,
-        shortType: '',
-        longType: brush_teeth.long
-      }
-    ]
+    correct: taking_shower,
+    option1: washing_hands,
+    option2: drink_water,
+    option3: brush_teeth
   },
   {
-    correctImg: washing_hands.img,
-    correctShortType: '',
-    correctLongType: washing_hands.long,
-    answers: [
-      {
-        id: '1',
-        img: washing_hands.img,
-        shortType: '',
-        longType: washing_hands.long,
-        correct: true
-      },
-      {
-        id: '2',
-        img: not_smoking.img,
-        shortType: '',
-        longType: not_smoking.long
-      },
-      {
-        id: '3',
-        img: taking_shower.img,
-        shortType: '',
-        longType: taking_shower.long
-      },
-      {
-        id: '4',
-        img: drink_water.img,
-        shortType: '',
-        longType: drink_water.long
-      }
-    ]
+    correct: washing_hands,
+    option1: not_smoking,
+    option2: taking_shower,
+    option3: drink_water
   }
 ];
+
+healthy = buildArray(array);
 
 export default healthy;

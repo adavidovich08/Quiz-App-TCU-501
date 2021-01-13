@@ -20,7 +20,8 @@ import activitiesQuestions from '../data/fifth/activities';
 import healthyQuestions from '../data/fifth/healthy';
 import hobbiesQuestions from '../data/fifth/hobbies';
 import sportsQuestions from '../data/fifth/sports';
-import pruebaQuestions from '../data/prueba';
+import superheroesQuestions from '../data/sixth/superheroes';
+import famousQuestions from '../data/sixth/famous';
 import {RowItem} from '../components/RowItem';
 
 const shuffleQuestions = (questions) => {
@@ -86,8 +87,11 @@ class QuizIndex extends React.Component {
       return hobbiesQuestions;
     } else if (name === 'Sports') {
       return sportsQuestions;
+    } else if (name === 'Superheroes') {
+      return superheroesQuestions;
+    } else if (name === 'Famous People') {
+      return famousQuestions;
     }
-    return pruebaQuestions;
   };
 
   render() {
