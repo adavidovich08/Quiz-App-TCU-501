@@ -1,3 +1,8 @@
-# Quiz-App-TCU-501
+# TCU Quiz App
 
-Agregar buena documentacion en el futuro para que se pueda extender.
+This project was made for my University Community Work (TCU-501).
+
+-----
+
+This project was made with the help of ReactNativeSchool's [react-native-quiz repo](https://github.com/ReactNativeSchool/react-native-quiz).
+
