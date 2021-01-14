@@ -22,22 +22,22 @@ const styles = StyleSheet.create({
   text: {
     color: '#FFF',
     fontWeight: '600',
-    fontSize: 20,
+    fontSize: 18,
     marginTop: 10
   },
   textScore: {
     textAlign: 'right',
     color: '#FFF',
     fontWeight: '600',
-    fontSize: 20,
+    fontSize: 18,
     marginTop: 10,
-    marginRight: 25
+    marginRight: 15
   },
   row: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingHorizontal: 10,
-    paddingVertical: 20,
+    paddingVertical: 15,
     marginBottom: 2
   }
 });
@@ -108,9 +108,9 @@ class HighScore extends React.Component {
             <View style={styles.row} backgroundColor={item.color}>
               <MaterialCommunityIcons // https://icons.expo.fyi/
                 name={item.icon}
-                size={30}
+                size={28}
                 color="white"
-                style={{paddingHorizontal: 15, marginTop: 10}}
+                style={{paddingHorizontal: 10, marginTop: 10}}
               />
               <Text style={styles.text}>{item.quizName}</Text>
               <Text style={styles.textScore}>{item.score}</Text>

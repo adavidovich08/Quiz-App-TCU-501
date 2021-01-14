@@ -27,15 +27,17 @@ const styles = StyleSheet.create({
     color: '#fff',
     textAlign: 'center',
     fontWeight: '600',
-    fontSize: 18,
-    paddingVertical: 5
+    fontSize: 15,
+    paddingVertical: 7.5,
+    paddingHorizontal: 5
   },
   shortTxtAnswer: {
     color: '#fff',
     textAlign: 'center',
     fontWeight: '600',
-    fontSize: 20,
-    paddingVertical: 10
+    fontSize: 18,
+    paddingVertical: 10,
+    paddingHorizontal: 2.5
   },
   imgAnswer: {
     borderRadius: 10,

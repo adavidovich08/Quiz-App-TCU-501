@@ -38,12 +38,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: 15
+    padding: 10
   },
   safeArea: {
     justifyContent: 'space-between',
     flex: 1,
-    marginTop: 10
+    marginTop: 15
   },
   imgContainer: {
     justifyContent: 'center',
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(255, 255, 255, 0.3)',
     borderRadius: 10,
     marginTop: 10,
-    marginBottom: 20,
+    marginBottom: 15,
     padding: 20
   },
   imgQuestion: {
@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
     color: '#fff',
     textAlign: 'center',
     fontWeight: '500',
-    fontSize: 20,
+    fontSize: 21,
     letterSpacing: 0.25
   },
   txtOverlay: {
@@ -387,7 +387,7 @@ class Quiz extends React.Component {
 
           <ButtonContainer>
             {this.shuffleAnswers(question.answers).map((answer) => (
-              <Button
+              <ButtonShortText
                 key={answer.id}
                 txtAnswer={answer.longType}
                 onPress={() => this.answer(answer)}
