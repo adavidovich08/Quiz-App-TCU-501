@@ -5,7 +5,8 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "eject": "expo eject",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "preinstall": "npx npm-force-resolutions"
   },
   "dependencies": {
     "@expo/vector-icons": "^10.0.0",
@@ -14,6 +15,7 @@
     "expo": "^39.0.3",
     "expo-av": "~8.6.0",
     "expo-updates": "~0.3.3",
+    "node-fetch": "^2.6.1",
     "react": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-39.0.3.tar.gz",
     "react-native-countdown-component": "^2.7.1",
@@ -28,7 +30,11 @@
     "babel-preset-expo": "^8.3.0",
     "eslint": "^7.12.1",
     "eslint-config-handlebarlabs": "0.0.6",
+    "npm-force-resolutions": "0.0.3",
     "prettier": "^2.1.2"
   },
-  "private": true
+  "private": true,
+  "resolutions": {
+    "node-fetch": "2.6.1"
+  }
 }
